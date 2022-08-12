@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.notice.mapper.INoticeMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+	<resultMap type="com.spring.pr.command.NoticeVO" id="NoticeMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<id column = "NOTICE_NUMBER_SEQ" property="NoticeNum"/>
+		
+		<result column ="NOTICE_TITLE" property = "NoticeTitle"/>
+		<result column ="NOTICE_WRITER" property = "NoticeWriter"/>
+		<result column ="NOTICE_CONTENT" property = "NoticeContent"/>
+		<result column ="NOTICE_DATE" property = "NoticeDate"/>
+		<result column ="NOTICE_FILES" property = "NoticeFile"/>
+		<result column ="NOTICE_HITS" property = "NoticeHits"/>
+		<result column ="MNGR_ID" property = "MNGRID"/>
+
+	</resultMap>
+	
+	<insert id="regist">
+		INSERT INTO 
+		Notice(NOTICE_NUMBER_SEQ, NOTICE_TITLE, NOTICE_WRITER, NOTICE_CONTENT,
+			   NOTICE_FILES, NOTICE_HITS, MNGR_ID)
+	    VALUES(NOTICE_NUMBER_SEQ_NAME.NEXTVAL, #{NoticeTitle}, #{NoticeWriter}, #{NoticeContent}, #{NoticeFile}, #{NoticeHits}, #{MNGRID})
+	</insert>
+	
+	<select id ="getList" resultMap="NoticeMap">
+	
+		select * from Notice
+	
+	</select>
+	
+	<select id="getTotal" resultType="int">
+	
+		select count(*) from Notice
+	
+	</select>
+	
+	<update id="update">
+		
+		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_WRITER = #{NoticeWriter}, NOTICE_Content = #{NoticeContent} 
+		where NOTICE_NUMBER_SEQ = #{NoticeNum}  
+		
+	</update>
+	
+	<delete id="delete">
+		delete from Notice where NOTICE_NUMBER_SEQ = #{NoticeNum}
+	</delete>
+</mapper>

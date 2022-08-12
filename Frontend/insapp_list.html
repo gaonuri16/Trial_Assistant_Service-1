@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    
+    <title>기관 신청자 정보 조회</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="apple-touch-icon" href="assetss/img/apple-icon.png" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.ico"
+    />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/templatemo.css" />
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+    <!--
+    
+TemplateMo 559 Zay Shop
+
+https://templatemo.com/tm-559-zay-shop
+
+-->
+
+    <style>
+      #notice_hit {
+        text-align: left !important;
+      }
+
+      #middle-sect {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+
+      .announcement-search {
+        width: 37%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .announcement-search input {
+        width: 75%;
+        border-radius: 5px;
+        padding: 3px 9px;
+        border: 1px solid #d6d6d6;
+      }
+
+      #announcement-search-btn {
+        border-radius: 5px;
+        border: 1px solid black;
+        font-size: 15px;
+        padding: 7px 9px;
+        background: white;
+        color: black;
+        width: 70px;
+      }
+
+      .btn-page {
+        width: 80%;
+        font-size: 10px;
+        padding: 0, 0%;
+      }
+
+      .andBtns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .paging-btns {
+        margin: 0 auto;
+      }
+
+      .del-btn{
+        display: flex;
+        justify-content : center;
+      }
+
+      .sec-list{
+        padding: 10% !important;
+      }
+
+      /* 여기서부터 추가 */
+.form-total{
+    padding-top: 100px;
+}
+
+.side-sec{
+    float: left;
+    width: 10%;
+    margin-left: 0;
+}
+
+.total-sec{
+    width: 70%;
+    float: right;
+    margin-right: 100px;
+}
+
+.notice-regi-btn{
+    margin-top: 10px;
+    float: right;
+    padding-bottom: 100px;
+}
+
+/*
+    왼쪽 사이드 카테고리
+*/
+
+.col-lg-3 {
+    margin-top: 150px;
+    margin-left: 100px;
+    width: 360px;
+}
+
+.pb-3 a {
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.pb-3 a:hover {
+    color: #5a95f5;
+}
+
+/*-----------------------------------------------------------------*/
+
+/*
+    사이드 버튼 이벤트 효과
+*/
+
+.action-btn {
+    padding: 15px 100px;
+    margin:10px 4px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display:inline-block;
+    
+}
+
+.action-btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: scaleX(.3);
+    opacity: 0;
+    transition: all .3s
+}
+  .action-btn:hover::before{
+    opacity: 1;
+    background-color: #212934;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+    transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity;   
+}
+
+.pb-3 a:hover {
+    color: white;
+}
+
+/*-----------------------------------------------------------------*/
+
+
+/* title style */
+.announcement-detail-title{
+    width: 100%;
+    margin-bottom: 80px;
+}
+.announcement-detail-title h3{
+    text-align: center;
+    margin: 0 auto;
+    border-top:2px solid #888888 ;
+    border-bottom:2px solid #888888 ;
+    padding: 15px;
+    color: #808080;
+    width: 50%;
+    font-size: 20px;
+}
+
+/* 검색 버튼  */
+.search-btn{
+  display: flex;
+  justify-content: center;
+  margin: 0%;
+}
+
+.announcement-search {
+        width: 420px;
+        margin-bottom: 10px;
+        float: right;
+        justify-content: center;
+      }
+
+      .announcement-search-input {
+        margin-right: 0 !important;
+        border-radius: 5px;
+        padding: 3px 9px;
+        border: 1px solid #d6d6d6;
+      }
+
+      #announcement-search-btn {
+        border-radius: 5px;
+        border: 1px solid black;
+        font-size: 15px;
+        padding: 7px 9px;
+        background: white;
+        color: black;
+        width: 70px;
+      }
+
+      .total{
+        padding-bottom: 100px;
+      }
+
+      textarea{
+    resize: none;
+}
+
+/* 푸터 */
+.under-footer {
+        height: 150px;
+    }
+
+.footer-box2 {
+        padding: 20px 0px;
+        position: relative;
+        left: 160px;
+        bottom: 115px;
+        font-size: 17px !important;
+        font-weight: 100 !important;
+        line-height: 30px;
+    }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Start Top Nav -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block"
+      id="templatemo_nav_top"
+    >
+      <div class="container text-light">
+        <div class="w-100 d-flex justify-content-between">
+          <div>
+            <i class="fa fa-envelope mx-2"></i>
+            <a
+              class="navbar-sm-brand text-light text-decoration-none"
+              href="mailto:info@company.com"
+              >바롬@company.com</a
+            >
+            <i class="fa fa-phone mx-2"></i>
+            <a
+              class="navbar-sm-brand text-light text-decoration-none"
+              href="tel:010-1234-1234"
+              >010-1234-1234</a
+            >
+          </div>
+          <div>
+            <a
+              class="text-light"
+              id="topnav"
+              href="index.html"
+              target="_blank"
+              rel="sponsored"
+              ><i class="fa-sm fa-fw me-2"></i>
+              HOME
+            </a>
+            <a class="text-light" id="topnav" href="#" target="_blank"
+              ><i class="fa-sm fa-fw me-2"></i>
+              로그인
+            </a>
+            <a class="text-light" id="topnav" href="#" target="_blank"
+              ><i class="fa-sm fa-fw me-2"></i>
+              회원가입
+            </a>
+            <a
+              class="text-light"
+              href="https://www.facebook.com/scourtkorea"
+              target="_blank"
+              rel="sponsored"
+              ><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i
+            ></a>
+            <a
+              class="text-light"
+              href="https://www.instagram.com/scourtkorea/"
+              target="_blank"
+              ><i class="fab fa-instagram fa-sm fa-fw me-2"></i
+            ></a>
+            <a
+              class="text-light"
+              href="https://twitter.com/scourtkorea"
+              target="_blank"
+              ><i class="fab fa-twitter fa-sm fa-fw me-2"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Close Top Nav -->
+    <!-- 이거는 지워도 될 것 같기도 한데 -->
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a
+          class="navbar-brand text-success logo h5 align-self-center"
+          href="index.html"
+        >
+          <img src="./assets/img/logoo.png" alt="온라인조력자등재시스템" />
+        </a>
+        <!-- 메인화면으로 돌아가는 화면  -->
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#templatemo_main_nav"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 이게 화면을 줄였을 때 중분류를 볼 수 있는 토클 박스  -->
+
+        <div
+          class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
+          id="templatemo_main_nav"
+        >
+          <div class="flex-fill">
+            <ul
+              class="header_text nav navbar-nav d-flex justify-content-between mx-lg-auto"
+            >
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">공고</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">공지사항</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">조력자 신청 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">현황조회(관리자)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">기관정보(관리자)</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown" id="dropdownbar">
+        <button class="btn btn-secondary dropdown-toggle btn-group-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 0px">
+          <i class="bi bi-person-square" style="font-size: 30px; color: black"></i>
+          <!-- 아이콘 넣음  -->
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item b1" href="#">로그인</a></li>
+          <li>
+            <a class="dropdown-item b1" href="#" aria-current="true"
+              >회원가입</a
+            >
+          </li>
+          <li><a class="dropdown-item b1" href="#">마이페이지</a></li>
+          <li><a class="dropdown-item b1" href="#">로그아웃</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Close Header -->
+
+            <!-- side바 추가 -->
+        <div class="total clearfix">
+              <!-- form을 감싸고 있음-->
+          <div class="container side-sec">
+              <div class="row">
+      
+                  <div class="col-lg-3">
+                      <h1 class="h2 pb-4">MY PAGE</h1>
+      
+                      
+      
+                      <ul class="list-unstyled templatemo-accordion">
+                          <li class="pb-3">
+                              <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="mypage_ins.html">
+                                  MY INFO
+                              </a>
+                          </li>
+                          <li class="pb-3">
+                              <a class="collapsed d-flex justify-content-between h3 text-decoration-none myInfo" href="#">
+                                  조력자 신청/선정 현황
+                              </a>
+                          </li>
+                          <li class="pb-3">
+                              <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                                  MY FAQ
+                              </a>
+                          </li>
+                          <li class="pb-3">
+                              <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="index.html">
+                              로그아웃
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+    <!-- Start Categories of The Month -->
+    <form class="form-total">
+      <section class = "py-3 total-sec ">
+      <div class="table-box col-lg second-section">
+        <div class="more-view title-box" id="notice_title">
+          <div class="announcement-detail-title">
+            <h3>기관 신청자 목록</h3>
+          </div>
+
+
+
+          <div class="announcement-search dropup">
+            <input type="text" class="announcement-search-input" placeholder="검색할 아이디 입력하세요." />
+            <button id="announcement-search-btn">검색</button>
+          </div>
+        </div>
+
+        <!-- 조력자별 구분이면 버튼을 따로 만드는것보다 검색으로 하는게 더 좋을 것 같은데 
+             논의 필요  -->
+
+        <!-- <div class="notice-regi-btn">
+          <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"></button>
+          <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">수정</button>
+          <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">수정</button>
+
+          <button
+          type="button"
+          id="title-btn"
+          class="btn btn-secondary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          제목
+        </button>
+        
+        <ul class="dropdown-menu">
+          <li>작성자</li>
+          <li>내용</li>
+          <li>제목</li>
+        </ul>
+        <input type="text" placeholder="검색할 제목을 입력하세요..." />
+        <button id="announcement-search-btn">검색</button>
+      </div> -->
+
+        </div>
+
+        <table class="announcement-table table  table-hover">
+          <thead style="background-color: #e9ecef; border-top:3px solid">
+            <th scope="col">신청번호</th>
+            <th scope="col">신청자 아이디</th>
+            <th scope="col">기관 이름</th>
+            <th scope="col">신청일자</th>
+            <th scope="col">삭제유무</th>
+          </thead>
+
+          <tbody>
+            <tr style="border-top : 3px solid #e9ecef">
+              <td>1</td>
+              <td>abcd</td>
+              <td>중앙정보</td>
+              <!-- Javascript를 사용해서 날짜 입력받거나  -->
+              <td>2022/07/29</td>
+              <td><button class="btn del-btn" type="button" id="inputGroupFileAddon04">삭제</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>abcd</td>
+              <td>정보중앙</td>
+              <!-- Javascript를 사용해서 날짜 입력받거나  -->
+              <td>2022/07/29</td>
+              <td><button class="btn del-btn" type="button" id="inputGroupFileAddon04">삭제</button></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>abcd</td>
+              <td>정보</td>
+              <!-- Javascript를 사용해서 날짜 입력받거나  -->
+              <td>2022/07/29</td>
+              <td><button class="btn del-btn" type="button" id="inputGroupFileAddon04">삭제</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="andBtns">
+          <div class="paging-btns">
+            <button type="button" class="btn btn-outline-secondary">◀</button>
+            <button type="button" class="btn btn-outline-secondary">1</button>
+            <button type="button" class="btn btn-outline-secondary">2</button>
+            <button type="button" class="btn btn-outline-secondary">3</button>
+            <button type="button" class="btn btn-outline-secondary">4</button>
+            <button type="button" class="btn btn-outline-secondary">▶</button>
+          </div>
+
+          <!-- 파일로 출력이 무슨 뜻이지? 
+              물어보기 -->
+      </div>
+
+
+
+
+    </section>
+  </form>
+</div>
+  
+    <!-- End Categories of The Month -->
+
+    <!-- Start Featured Product -->
+
+    <!-- Start Footer 회원 -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-3 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">공고</h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li><a class="text-decoration-none" href="#">공고 조회</a></li>
+            </ul>
+          </div>
+
+          <div class="col-3 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              공지사항
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li><a class="text-decoration-none" href="#">공지사항</a></li>
+              <li><a class="text-decoration-none" href="#">조력자 안내</a></li>
+            </ul>
+          </div>
+
+          <div class="col-3 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              조력자 신청
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <a class="text-decoration-none" href="#">조력자 신청하기</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-3 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              마이 페이지_회원
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <a class="text-decoration-none" href="#"
+                  >조력자 신청 현황/선정여부</a
+                >
+              </li>
+              <li><a class="text-decoration-none" href="#">나의 정보</a></li>
+              <li><a class="text-decoration-none" href="#">MY FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Start Footer 관리자 -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-2 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">공고</h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li><a class="text-decoration-none" href="#">공고 조회</a></li>
+            </ul>
+          </div>
+
+          <div class="col-2 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              신청자
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li><a class="text-decoration-none" href="#">공지사항</a></li>
+              <li><a class="text-decoration-none" href="#">조력자 안내</a></li>
+            </ul>
+          </div>
+
+          <div class="col-2 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              현황조회
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <a class="text-decoration-none" href="#">조력자 신청하기</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-2 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              기관정보
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <a class="text-decoration-none" href="#">조력자 신청하기</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-2 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              공지사항
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <a class="text-decoration-none" href="#">조력자 신청하기</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-2 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">
+              마이 페이지_관리자
+            </h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <a class="text-decoration-none" href="#"
+                  >조력자 신청 현황/선정여부</a
+                >
+              </li>
+              <li><a class="text-decoration-none" href="#">나의 정보</a></li>
+              <li><a class="text-decoration-none" href="#">MY FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-100 bg-dark py-3 under-footer">
+          <div class="footer-box1">
+            <img
+              class="footer-box1-img"
+              width="100px"
+              src="assets/img/logo.png"
+              alt="Logo Image"
+            />
+          </div>
+
+          <div class="text-white footer-box2">
+            (06590) 서울 특별시 서초구 서초대로 219
+            <br />
+            대표전화 02) 3480 - 1100 | 홈페이지 이용 문의 02) 3480 - 1715(평일
+            9시 ~ 18시) | 인터넷 등기 사용자 지원센터 1544 - 0770
+            <br />
+            2조 노권표 문경록 안다솔 이혜원 이유림
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+  </body>
+</html>

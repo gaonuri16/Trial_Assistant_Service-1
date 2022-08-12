@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>조력자 선발 시스템</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assetss/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+<!--
+    
+TemplateMo 559 Zay Shop
+
+https://templatemo.com/tm-559-zay-shop
+
+-->
+</head>
+
+<body>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">바롬@company.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-1234-1234">010-1234-1234</a>
+                </div>
+                <div>
+                    <a class="text-light" id="topnav" href="index.html" target="_blank" rel="sponsored"><i class="fa-sm fa-fw me-2"></i>
+                        HOME
+                        </a>
+                        <a class="text-light" id="topnav" href="login.html" target="_blank"><i class="fa-sm fa-fw me-2"></i>
+                        로그인
+                        </a>
+                        <a class="text-light" id="topnav" href="joinSelect.html" target="_blank"><i class="fa-sm fa-fw me-2"></i>
+                        회원가입
+                    </a>
+                    <a class="text-light" href="https://www.facebook.com/scourtkorea" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/scourtkorea/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/scourtkorea" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+    <!-- 이거는 지워도 될 것 같기도 한데 -->
+
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h5 align-self-center" href="index.html">
+                <img src="./assets/img/logoo.png" alt="온라인조력자등재시스템">
+            </a>
+            <!-- 메인화면으로 돌아가는 화면  -->
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> 
+            </button>
+            <!-- 이게 화면을 줄였을 때 중분류를 볼 수 있는 토클 박스  -->
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="header_text nav navbar-nav d-flex justify-content-between mx-lg-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="announcement.html">공고</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="notice_list.html">공지사항</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="helper_apply.html">조력자 신청 </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="app_list.html">현황조회(관리자)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Ins_list.html">기관정보(관리자)</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown" id ="dropdownbar">
+                            
+                <button class="btn btn-secondary dropdown-toggle btn-group-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; border: 0px;">
+                    <i class="bi bi-person-square" style="font-size: 30px; color: black;"></i>
+                    <!-- 아이콘 넣음  -->
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <!-- href : 절대경로로 바꾸기 -->
+                    <li><a class="dropdown-item b1" href="login.html">로그인</a></li>
+                    <li><a class="dropdown-item b1" href="joinSelect.html" aria-current="true">회원가입</a></li>
+                    <li><a class="dropdown-item b1" href="myPageIns.html">마이페이지</a></li>
+                    <li><a class="dropdown-item b1" href="#">로그아웃</a></li>
+                </ul>
+        </div>
+    </nav>
+    
+    <!-- Close Header -->
+
+
+
+
+
+<!-- 
+    슬라이드 코드 HTML
+    공고목록 위에 복붙하시면 됩니다~
+-->
+    <!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./assets/img/law1.jpg" alt="법원이미지1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./assets/img/law2.jpg" alt="법원이미지2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./assets/img/law3.jpg" alt="법원이미지3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    <!-- End Banner Hero -->
+
+
+
+    <!-- Start Categories of The Month -->
+    <section class="py-5 px-3">
+        
+        <div class="row pt-3">
+            
+            <div class="table-box col-lg-6">
+                <div class="more-view title-box">
+                    <h4>공지사항</h4>
+                    <div class="fs-6">+ 더보기</div>
+                </div>
+                <table class="notice-table">
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                    <tr>
+                        <td>여기는 2022년 2차 loremIpsum의 제목이 표시될 영역입니다.</td>
+                        <td>2022/08/03</td>
+                    </tr>
+                </table>
+                
+            </div>
+            <div class="table-box col-lg-6">
+                <div  class="more-view title-box">
+                    <h4>공고</h4>
+                    <div class="fs-6">+ 더보기</div>
+                </div>
+                
+                <table class="announcement-table">
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                    <tr>
+                        <td>공고제목이들어갈영역입니다.</td>
+                        <td>기관추천조력자</td>
+                        <td>22/08/03~22/08/23</td>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+        
+    </section>
+    <!-- End Categories of The Month -->
+
+
+    <!-- Start Featured Product -->
+    
+
+
+<!-- Start Footer 회원 -->
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-3 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">공고</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">공고 조회</a></li>
+                </ul>
+            </div>
+
+            <div class="col-3 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">공지사항</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">공지사항</a></li>
+                    <li><a class="text-decoration-none" href="#">조력자 안내</a></li>
+                </ul>
+            </div>
+
+            <div class="col-3 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">조력자 신청</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">조력자 신청하기</a></li>
+                </ul>
+            </div>
+
+            <div class="col-3 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">마이 페이지_회원</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">조력자 신청 현황/선정여부</a></li>
+                    <li><a class="text-decoration-none" href="#">나의 정보</a></li>
+                    <li><a class="text-decoration-none" href="#">MY FAQ</a></li>
+                </ul>
+            </div>
+            
+
+        </div>
+
+    </div>
+    </footer>
+
+
+
+    <!-- Start Footer 관리자 -->
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-2 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">공고</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">공고 조회</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">신청자</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">공지사항</a></li>
+                    <li><a class="text-decoration-none" href="#">조력자 안내</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">현황조회</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">조력자 신청하기</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">기관정보</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">조력자 신청하기</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 pt-5"> 
+                <h2 class="h2 text-light border-bottom pb-3 border-light">공지사항</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">조력자 신청하기</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">마이 페이지_관리자</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">조력자 신청 현황/선정여부</a></li>
+                    <li><a class="text-decoration-none" href="#">나의 정보</a></li>
+                    <li><a class="text-decoration-none" href="#">MY FAQ</a></li>
+                </ul>
+            </div>
+            
+
+        </div>
+
+
+        <div class="w-100 bg-dark py-3 under-footer">
+
+                    <div class="footer-box1" >
+                        <img class="footer-box1-img" width="100px" src="assets/img/logo.png" alt="Logo Image">
+                    </div>
+    
+                    <div class="text-white footer-box2">
+                        (06590) 서울 특별시 서초구 서초대로 219
+                        <br>
+                        대표전화 02) 3480 - 1100 | 홈페이지 이용 문의 02) 3480 - 1715(평일 9시 ~ 18시) | 인터넷 등기 사용자 지원센터 1544 - 0770
+                        <br>
+                        2조 노권표 문경록 안다솔 이혜원 이유림
+                    </div>
+        </div>
+        
+    </div>
+
+    
+
+</footer>
+
+   
+
+<!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>
