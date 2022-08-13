@@ -15,7 +15,9 @@ CREATE TABLE ANSWER (
 	MNGR_ID	VARCHAR(20)	NOT NULL,
 	ANS_WRITER	VARCHAR2(20)	NOT NULL,
 	ANS_CONTENT	VARCHAR2(1000)	NOT NULL,
-	ANS_DATE	DATE DEFAULT sysdate NOT NULL
+	ANS_DATE	DATE DEFAULT sysdate NOT NULL,
+	ANS_FILE_LOCA VARCHAR2(300), 
+	ANS_HIT NUMBER(5) DEFAULT 0 NOT NULL 
 	);
 	
 	CREATE SEQUENCE ANS_NUMBER_SEQ_NAME
@@ -39,5 +41,9 @@ public class AnswerVO {
 	private String AnsWriter;
 	private String AnsContent;
 	private Timestamp AnsDate;
+	
+	private String AnsFileLoca;
+	private int AnsHit;
 
 }
+

@@ -47,8 +47,8 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds" />
 
-	 <property name="configLocation" value="WEB-INF/spring/mybatis-config.xml"/>
-	 <!-- mybatis에 대한 추가적인 설정을 담은 xml 파일을 등록  -->
+<!-- 	 <property name="configLocation" value="WEB-INF/spring/mybatis-config.xml"/>
+ -->	 <!-- mybatis에 대한 추가적인 설정을 담은 xml 파일을 등록  -->
 	 	
 	 <property name="mapperLocations" value="classpath:/mappers/*Mapper.xml"/>
 	  
@@ -58,7 +58,8 @@
 	<!-- mapper이름은 이렇게 지정하세요  -->
 	<mybatis-spring:scan
 		base-package="com.spring.pr.notice.mapper" />
-<!-- 	<mybatis-spring:scan
-		base-package="com.spring.pr.user.mapper" /> -->
-	
+	<mybatis-spring:scan
+			base-package="com.spring.pr.faq.mapper" />
+	<mybatis-spring:scan
+			base-package="com.spring.pr.answer.mapper" />
 </beans>

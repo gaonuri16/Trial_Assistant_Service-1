@@ -1,4 +1,4 @@
-package com.spring.pr.trial.notice;
+package com.spring.pr.trial.answer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,28 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.spring.pr.answer.mapper.IAnswerMapper;
+import com.spring.pr.command.AnswerVO;
+import com.spring.pr.command.FaqVO;
 import com.spring.pr.command.NoticeVO;
+import com.spring.pr.faq.mapper.IFaqMapper;
 import com.spring.pr.notice.mapper.INoticeMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
-public class NoticeMapperTest {
+public class AnswerMapperTest {
 	
 	@Autowired
-	private INoticeMapper mapper; 
+	private IAnswerMapper mapper; 
 	
 	@Test
 	public void registTest() {
 		for (int i = 0; i <= 100; i++) {
-			NoticeVO notice = new NoticeVO();
-			notice.setNoticeNum(i);
-			notice.setNoticeTitle(i + "번째 제목");
-			notice.setNoticeWriter(i + "번째 작성자 ");
-			notice.setNoticeContent(i + "번째 내용 ");
-			notice.setNoticeFile(i+ "번째 파일 저장 주소 ");
-			notice.setNoticeHits(i);
-			notice.setMNGRID(i + "번째 관리자");
-			mapper.regist(notice);
+			AnswerVO ans = new AnswerVO();
+			ans.setMngrId("admin_id");
+			ans.setAnsWriter(i + "writer");
+			ans.setAnsContent(i + "content");
+			ans.setAnsFileLoca(i + "c:// ~~~");
+			mapper.regist(ans);
 		}
 	}
 	
@@ -41,32 +42,33 @@ public class NoticeMapperTest {
 		System.out.println(mapper.getTotal());
 	}
 	
+	
 	@Test
 	public void getContentTest() {
-		System.out.println(mapper.getContent(3));
+		System.out.println(mapper.getContent(2));
 	}
-	
 	
 	@Test
 	public void updateTest() {
-		NoticeVO notice = new NoticeVO();
-		notice.setNoticeNum(3);
-		notice.setNoticeTitle("수정수정수정수정 ");
-		notice.setNoticeWriter("수정수정수정");
-		notice.setNoticeContent("수정수정수정수정수정");
-		
-		mapper.update(notice);
+		AnswerVO ans = new AnswerVO();
+		ans.setAnsContent("수정수정수정내용" );
+		ans.setAnsFileLoca("수정수정 파일 경로");
+		ans.setAnsNum(2);
+		mapper.update(ans);
 	}
 	
 	@Test
 	public void deleteTest() {
 
-		mapper.delete(2);
+		mapper.delete(3);
 	}
 	
 	@Test
 	public void upHitTest() {
-		mapper.upHit(3);
+		mapper.upHit(2);
 	}
 
 }
+
+
+

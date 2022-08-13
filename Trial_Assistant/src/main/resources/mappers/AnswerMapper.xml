@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.answer.mapper.IAnswerMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+	<resultMap type="com.spring.pr.command.AnswerVO" id="AnswerMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<id column = "ANS_NUMBER_SEQ" property="AnsNum"/>
+		<id column = "FAQ_NUMBER_SEQ" property="FaqNum"/>
+		<id column = "MNGR_ID" property="MngrId"/>
+		
+		<result column ="ANS_WRITER" property = "AnsWriter"/>
+		<result column ="ANS_CONTENT" property = "AnsContent"/>
+		<result column ="ANS_DATE" property = "AnsDate"/>
+		<result column ="ANS_FILE_LOCA" property = "AnsFileLoca"/>
+		<result column ="ANS_HIT" property = "AnsHit"/>
+		
+
+
+	</resultMap>
+	
+	<insert id="regist">
+		INSERT INTO 
+		ANSWER(ANS_NUMBER_SEQ, FAQ_NUMBER_SEQ, MNGR_ID, ANS_WRITER,
+			   ANS_CONTENT, ANS_FILE_LOCA)
+	    VALUES(ANS_NUMBER_SEQ_NAME.NEXTVAL, FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{MngrId}, #{AnsWriter}, 
+	    #{AnsContent}, #{AnsFileLoca} )
+	</insert>
+	
+	<select id ="getList" resultMap="AnswerMap">
+	
+		select * from ANSWER
+	
+	</select>
+	
+	<select id="getTotal" resultType="int">
+	
+		select count(*) from ANSWER
+	
+	</select>
+	
+	<select id = "getContent" resultMap="AnswerMap">
+		select * from ANSWER where ANS_NUMBER_SEQ = #{AnsNum}
+		<!-- 질문번호와 답변번호를 같이 넣어야 하지 않을까?  --> 
+	</select>
+	
+	<update id="update">
+		
+		update ANSWER SET ANS_CONTENT = #{AnsContent}, ANS_FILE_LOCA = #{AnsFileLoca} 
+		where ANS_NUMBER_SEQ = #{AnsNum}  
+		
+	</update>
+	
+	<delete id="delete">
+		delete from ANSWER where ANS_NUMBER_SEQ = #{AnsNum}
+	</delete>
+	
+		<!-- 조회 수 증가 로직  -->
+	<update id="upHit">
+	
+		update ANSWER set ANS_HIT = ANS_HIT+1
+		where ANS_NUMBER_SEQ = #{AnsNum} 
+		
+	</update>	
+</mapper>

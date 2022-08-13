@@ -23,4 +23,7 @@ public interface INoticeMapper {
 	
 	// 삭제 
 	void delete(int NoticeNum);
+	
+	// 조회수 증가 
+	void upHit(int FaqNum);
 }

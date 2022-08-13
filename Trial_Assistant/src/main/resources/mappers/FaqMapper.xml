@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.faq.mapper.IFaqMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+	<resultMap type="com.spring.pr.command.FaqVO" id="FaqMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<id column = "FAQ_NUMBER_SEQ" property="FaqNum"/>
+		
+		<result column ="FAQ_TITLE" property = "FaqTitle"/>
+		<result column ="FAQ_CONTENT" property = "FaqContent"/>
+		<result column ="FAQ_DATE" property = "FaqDate"/>
+		<result column ="FAQ_HIT" property = "FaqHit"/>
+		<result column ="FAQ_FILE_LOCA" property = "FaqFileLoca"/>
+		<result column ="JOIN_ID" property = "JoinId"/>
+
+	</resultMap>
+	
+	<insert id="regist">
+	
+		INSERT INTO FAQ(FAQ_NUMBER_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_HIT, FAQ_FILE_LOCA, JOIN_ID)
+		VALUES(FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{FaqTitle}, #{FaqContent},  #{FaqHit}, #{FaqFileLoca}, #{JoinId})
+		<!-- 조회 수 증가 로직 구현해야함  -->
+		
+	</insert>
+	
+	<select id ="getList" resultMap="FaqMap">
+	
+		select * from FAQ
+	
+	</select>
+	
+	<select id="getTotal" resultType="int">
+	
+		select count(*) from FAQ
+	
+	</select>
+	
+	<select id = "getContent" resultMap="FaqMap">
+	
+		select * from FAQ where FAQ_NUMBER_SEQ = #{FaqNum}
+		
+	</select>
+	
+	<update id="update">
+		
+		update FAQ SET FAQ_TITLE = #{FaqTitle}, FAQ_Content = #{FaqContent}, FAQ_FILE_LOCA = #{FaqFileLoca} 
+		where FAQ_NUMBER_SEQ = #{FaqNum}  
+		
+	</update>
+	
+	<delete id="delete">
+	
+		delete from FAQ where FAQ_NUMBER_SEQ = #{FaqNum}
+		
+	</delete>
+	
+	<!-- 조회 수 증가 로직  -->
+	<update id="upHit">
+	
+		update FAQ set FAQ_HIT = FAQ_HIT+1
+		where FAQ_NUMBER_SEQ = #{FaqNum} 
+		
+	</update>	
+	
+	
+</mapper>

@@ -41,6 +41,10 @@
 	
 	</select>
 	
+	<select id = "getContent" resultMap="NoticeMap">
+		select * from Notice where Notice_NUMBER_SEQ = #{NoticeNum}
+	</select>
+	
 	<update id="update">
 		
 		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_WRITER = #{NoticeWriter}, NOTICE_Content = #{NoticeContent} 
@@ -51,4 +55,12 @@
 	<delete id="delete">
 		delete from Notice where NOTICE_NUMBER_SEQ = #{NoticeNum}
 	</delete>
+	
+		<!-- 조회 수 증가 로직  -->
+	<update id="upHit">
+	
+		update Notice set NOTICE_HITS = NOTICE_HITS+1
+		where Notice_NUMBER_SEQ = #{NoticeNum} 
+		
+	</update>	
 </mapper>
