@@ -25,6 +25,6 @@ public interface INoticeService {
 	void delete(int bno);
 	
 	// 조회수 증가 
-	void upHit(int FaqNum);
+	void upHit(int bno);
 
 }
