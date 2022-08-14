@@ -71,7 +71,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">조력자 신청 </a>
                             </li>
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">현황조회</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">기관정보</a>
+                            </li>
                         </ul>
                     </div>
     
