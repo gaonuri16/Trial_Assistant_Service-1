@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.user.mapper.IUserMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+<!-- 	 <resultMap type="com.spring.pr.command.UserBasicVO" id="UserBasicMap">
+		기본키는 id 태그를 사용하고 나머지는 result 태그를 사용
+		<id column = "JOIN_ID" property="JoinId"/>
+		<result column ="JOIN_SOC_NUM" property = "JoinSocNum"/>
+		<result column ="ANM_NO_SEQ" property = "AnmNum"/>
+		<result column ="JOIN_PERSON" property = "JoinPerson"/>
+
+	</resultMap> 
+	
+	 <resultMap type="com.spring.pr.command.UserDetailVO" id="UserDetailMap">
+		기본키는 id 태그를 사용하고 나머지는 result 태그를 사용
+		<id column = "JOIN_SOC_NUM" property="JoinSocNum"/>
+		<result column ="JOIN_NAME" property = "JoinName"/>
+		<result column ="JOIN_PW" property = "JoinPw"/>
+		<result column ="JOIN_GEN" property = "JoinGen"/>
+		<result column ="JOIN_EMAIL" property = "JoinEmail"/>
+		<result column ="JOIN_PHONE" property = "JoinPhone"/>
+		<result column ="JOIN_ADDR_BASIC" property = "JoinAddrBasic"/>
+		<result column ="JOIN_ADDR_DETAIL" property = "JoinAddrDetail"/>
+		<result column ="JOIN_DATE" property = "JoinDate"/>
+		<result column ="JOIN_RIGHT" property = "JoinRight"/>
+
+	</resultMap>   -->
+	
+	<!-- <resultMap type="com.spring.pr.command.UserVO" id="UserMap">
+		기본키는 id 태그를 사용하고 나머지는 result 태그를 사용
+		<id column = "JOINSOCNUM" property="JoinSocNum"/>
+		<result column = "JOINID" property="JoinId"/>
+		<result column ="JOINSOCNUM" property = "JoinSocNum"/>
+		<result column ="ANMNOSEQ" property = "AnmNum"/>
+		<result column ="JOINPERSON" property = "JoinPerson"/>
+		<result column ="JOINNAME" property = "JoinName"/>
+		<result column ="JOINPW" property = "JoinPw"/>
+		<result column ="JOINGEN" property = "JoinGen"/>
+		<result column ="JOINEMAIL" property = "JoinEmail"/>
+		<result column ="JOINPHONE" property = "JoinPhone"/>
+		<result column ="JOINADDRBASIC" property = "JoinAddrBasic"/>
+		<result column ="JOINADDRDETAIL" property = "JoinAddrDetail"/>
+		<result column ="JOINDATE" property = "JoinDate"/>
+		<result column ="JOINRIGHT" property = "JoinRight"/>
+ 
+	</resultMap>   -->
+	 
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM USERBASIC
+		WHERE
+		JoinId = #{JOINID}
+	</select>
+	
+	
+	<insert id="join">
+		INSERT ALL
+		INTO UserBasic(JOINID, JOINSOCNUM, JOINPERSON) 
+			VALUES(#{JOINID}, #{JOINSOCNUM}, #{JOINPERSON})
+			
+		INTO UserDetail(JOINSOCNUM, JOINNAME, JOINPW, JOINGEN, JOINEMAIL, JOINPHONE, 
+						JOINADDRBASIC, JOINADDRDETAIL, JOINRIGHT) 
+			VALUES(#{JOINSOCNUM}, #{JOINNAME}, #{JOINPW}, #{JOINGEN}, #{JOINEMAIL},
+			#{JOINPHONE}, #{JOINADDRBASIC}, #{JOINADDRDETAIL}, #{JOINRIGHT})
+		SELECT * FROM dual
+	</insert>
+	
+	
+	<select id ="login">
+		SELECT *
+		FROM USERBASIC B, USERDETAIL D
+		WHERE B.JOINID = #{JoinId}
+		AND D.JOINPW = #{JoinPw}
+	</select>
+	
+	<select id="idSearch" resultType="int">
+		SELECT JOINID FROM USERBASIC
+		WHERE
+		JOINSOCNUM = #{JoinSocNum}
+	</select>
+	
+	<update id="pwSearch">
+		update USERDETAIL
+		SET JOINPW = #{JoinPw}
+		where JOINNAME = #{JoinName} 
+		and JOINSOCNUM = #{JoinSocNum} 
+	</update>
+	
+	
+	
+	<select id="getInfo">
+		SELECT
+			B.JOINID,
+			D.JOINNAME,
+			D.JOINSOCNUM,
+			D.JOINGEN,
+			D.JOINEMAIL,
+			D.JOINPHONE,
+			D.JOINADDRBASIC,
+			D.JOINADDRDETAIL
+		FROM USERDETAIL D LEFT OUTER JOIN USERBASIC B
+		ON D.JOINSOCNUM = B.JOINSOCNUM
+		WHERE B.JOINID = #{JOINID}
+	</select>
+	
+	<update id="updateUser">
+		UPDATE USERDETAIL D
+		SET D.JOINADDRBASIC = #{JoinAddrBasic},
+           	D.JOINADDRDETAIL = #{JoinAddrDetail}
+		WHERE JOINSOCNUM = (
+	        SELECT JOINSOCNUM 
+	        FROM USERBASIC B
+	        WHERE JOINID = #{JOINID})
+	</update>
+	
+	<delete id="deleteUser">
+		delete from USERBASIC B
+		where exists
+		(select 1 from USERDETAIL D
+		where B.JOINSOCNUM = D.JOINSOCNUM
+		and d.JOINPW = #{JOINPW}
+		
+		delete from USERDETAIL 
+		where JOINPW = #{JOINPW}
+		and JOINNAME = #{JOINNAME}
+	</delete>
+</mapper>

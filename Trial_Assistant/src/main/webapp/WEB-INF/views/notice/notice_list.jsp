@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>     
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -252,6 +256,12 @@
         font-weight: 100 !important;
         line-height: 30px;
     }
+    
+/* 제목을 클릭했을 때 a링크 스타일 없앰  */
+.link-a-style{
+	text-decoration:none;
+	color:black;
+}    
 
 </style>
 </head>
@@ -328,36 +338,31 @@
 
         <table class="announcement-table table table-hover">
           <thead style="background-color: #e9ecef; border-top:3px solid ">
-            <th scope="col">번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">작성일</th>
-            <th scope="col">조회수</th>
+	          <tr>
+	            <th scope="col">번호</th>
+	            <th scope="col">제목</th>
+	            <th scope="col">작성자</th>
+	            <th scope="col">작성일</th>
+	            <th scope="col">조회수</th>
+	          </tr>
           </thead>
 
           <tbody style="border-top : 3px solid #e9ecef">
-            <tr>
-              <td>1</td>
-              <td>공지사항 제목</td>
-              <td>공지사항 작성자</td>
-              <td>2022/08/04 ~ 2022/08/04</td>
-              <!-- Javascript를 사용해서 날짜 입력받거나  -->
-              <td id="notice_hit">1</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>공지사항 제목</td>
-              <td>공지사항 작성자</td>
-              <td>2022/08/04 ~ 2022/08/04</td>
-              <td id="notice_hit">12</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>공지사항 제목</td>
-              <td>공지사항 작성자</td>
-              <td>2022/08/04 ~ 2022/08/04</td>
-              <td id="notice_hit">123</td>
-            </tr>
+          
+          	<c:forEach var="notice" items="${noticeList }">
+          		<tr>
+	              <td>${notice.noticeNum}</td>
+	              <td>
+	              	<a href="<c:url value='/notice/content/${notice.noticeNum }' />" class="link-a-style">${notice.noticeTitle }</a>
+	              </td>
+	              <td>${notice.noticeWriter }</td>
+	              <td><fmt:formatDate value="${notice.noticeDate}" pattern="yyyy-MM-dd"/></td>
+	              <!-- Javascript를 사용해서 날짜 입력받거나  -->
+	              <td id="notice_hit">${notice.noticeHits }</td>
+	            </tr>
+          	</c:forEach>
+            
+            
           </tbody>
         </table>
 

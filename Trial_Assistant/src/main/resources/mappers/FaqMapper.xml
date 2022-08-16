@@ -31,7 +31,7 @@
 	
 	<select id ="getList" resultMap="FaqMap">
 	
-		select * from FAQ
+		select * from FAQ 
 	
 	</select>
 	

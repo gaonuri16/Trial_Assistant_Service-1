@@ -31,8 +31,7 @@
 	
 	<select id ="getList" resultMap="NoticeMap">
 	
-		select * from Notice
-	
+		select * from notice order by notice_NUMBER_SEQ DESC	
 	</select>
 	
 	<select id="getTotal" resultType="int">
@@ -47,7 +46,7 @@
 	
 	<update id="update">
 		
-		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_WRITER = #{NoticeWriter}, NOTICE_Content = #{NoticeContent} 
+		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_Content = #{NoticeContent} 
 		where NOTICE_NUMBER_SEQ = #{NoticeNum}  
 		
 	</update>
