@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="om.spring.pr.mypage.mapper.IMypageMapper">
+<mapper namespace="com.spring.pr.mypage.mapper.IMypageMapper">
 	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
 	
 	
@@ -17,12 +17,34 @@
 		<result column ="FAQ_DATE" property = "FaqDate"/>
 		<result column ="FAQ_HIT" property = "FaqHit"/>
 		<result column ="FAQ_FILE_LOCA" property = "FaqFileLoca"/>
-		<result column ="JOIN_ID" property = "JoinId"/>
+		<result column ="JOINID" property = "JOINID"/>
 
 	</resultMap>
 	
+	 <resultMap type="com.spring.pr.command.UserVO" id="UserMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<!-- <id column = "JOINSOCNUM" property="JoinSocNum"/> -->
+		<result column = "JOINID" property="JOINID"/>
+		<result column ="JOINSOCNUM" property = "JOINSOCNUM"/>
+		<result column ="ANMNOSEQ" property = "ANMNOSEQ"/>
+		<result column ="JOINPERSON" property = "JOINPERSON"/>
+		<result column ="JOINNAME" property = "JOINNAME"/>
+		<result column ="JOINPW" property = "JOINPW"/>
+		<result column ="JOINGEN" property = "JOINGEN"/>
+		<result column ="JOINEMAIL" property = "JOINEMAIL"/>
+		<result column ="JOINPHONE" property = "JOINPHONE"/>
+		<result column ="JOINADDRBASIC" property = "JOINADDRBASIC"/>
+		<result column ="JOINADDRDETAIL" property = "JOINADDRDETAIL"/>
+
+		<result column ="JOINRIGHT" property = "JOINRIGHT"/>
+		<result column ="INSSOCNUM" property = "INSSOCNUM"/>
+		<result column ="INSADDRBASIC" property = "INSADDRBASIC"/>
+		<result column ="INSADDRDETAIL" property = "INSADDRDETAIL"/>
+
+	</resultMap> 
+	
 	<!-- getInfo (my info 정보 조회) --> 
-	<select id="getInfo">
+	<select id="getInfo" resultMap="UserMap">
 		SELECT
 			B.JOINID,
 			D.JOINNAME,
@@ -31,17 +53,20 @@
 			D.JOINEMAIL,
 			D.JOINPHONE,
 			D.JOINADDRBASIC,
-			D.JOINADDRDETAIL
+			D.JOINADDRDETAIL,
+			D.INSSOCNUM,
+			D.INSADDRBASIC,
+			D.INSADDRDETAIL
 		FROM USERDETAIL D LEFT OUTER JOIN USERBASIC B
 		ON D.JOINSOCNUM = B.JOINSOCNUM
-		WHERE B.JOINID = #{JoinId}
+		WHERE B.JOINID = #{JOINID}
 	</select>
 	
 	<!-- updateInfo (my info 정보 수정 ) --> 
 	<update id="updateUser">
 		UPDATE USERDETAIL D
-		SET D.JOINADDRBASIC = #{JoinAddrBasic},
-           	D.JOINADDRDETAIL = #{JoinAddrDetail}
+		SET D.JOINADDRBASIC = #{JOINADDRBASIC},
+           	D.JOINADDRDETAIL = #{JOINADDRDETAIL}
 		WHERE JOINSOCNUM = (
 	        SELECT JOINSOCNUM 
 	        FROM USERBASIC B
@@ -49,12 +74,17 @@
 	</update>
 
 	<!-- deleteUser (회원탈퇴) --> 
-	<delete id="deleteUser">
+	<delete id="deleteUser1">
 		delete from USERBASIC B
 		where exists
 		(select 1 from USERDETAIL D
 		where B.JOINSOCNUM = D.JOINSOCNUM
-		and d.JOINPW = #{JOINPW}
+		and d.JOINPW = #{JOINPW})
+		
+	</delete>
+	
+	<delete id="deleteUser2">
+	
 		
 		delete from USERDETAIL 
 		where JOINPW = #{JOINPW}
@@ -72,14 +102,16 @@
 		select * from FAQ
 	</select>
 		
-	<!-- registFaq(myfaq 질문 등록 ) --> 
+	<!-- regist(myfaq 질문 등록 ) --> 
 	<insert id="registFaq">
-	
-		INSERT INTO FAQ(FAQ_NUMBER_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_HIT, FAQ_FILE_LOCA, JOIN_ID)
-		VALUES(FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{FaqTitle}, #{FaqContent},  #{FaqHit}, #{FaqFileLoca}, #{JoinId})
-		<!-- 조회 수 증가 로직 구현해야함  -->
+	INSERT INTO FAQ(FAQ_NUMBER_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_HIT, FAQ_FILE_LOCA, JOINID)
+		VALUES(FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{FaqTitle}, #{FaqContent},  #{FaqHit}, #{FaqFileLoca}, #{JOINID})
 		
 	</insert>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from Notice
+	</select>
 	
 	<!-- getContent(myfaq 상세보기 ) --> 
 	<select id = "getContent" resultMap="FaqMap">
@@ -87,13 +119,13 @@
 	</select>
 	
 	<!-- updateFaq(myfaq 글 수정 ) --> 
-	<update id="update">
+	<update id="updateFaq">
 		update FAQ SET FAQ_TITLE = #{FaqTitle}, FAQ_Content = #{FaqContent}, FAQ_FILE_LOCA = #{FaqFileLoca} 
 		where FAQ_NUMBER_SEQ = #{FaqNum}  
 	</update>
 	
 	<!-- deleteFaq(myfaq 글 삭제  ) --> 
-	<delete id="delete">
+	<delete id="deleteFaq">
 	
 		delete from FAQ where FAQ_NUMBER_SEQ = #{FaqNum}
 		

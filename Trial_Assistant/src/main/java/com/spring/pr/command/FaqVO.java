@@ -41,6 +41,6 @@ public class FaqVO {
 	private Timestamp FaqDate;
 	private int FaqHit;
 	private String FaqFileLoca;
-	private String JoinId;
+	private String JOINID;
 
 }

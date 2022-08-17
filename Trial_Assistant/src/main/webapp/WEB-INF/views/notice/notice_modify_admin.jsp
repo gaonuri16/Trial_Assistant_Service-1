@@ -250,7 +250,7 @@ textarea {
 
 
 		<!-- Start Categories of The Month -->
-		<form action="<c:url value='/notice/Modify'/>" name="noticeModiForm" method="post" class="form-total" >
+		<form action="<c:url value='/notice/modify'/>" name="noticeModiForm" method="post" class="form-total" enctype="multipart/form-data">
 		
 			<section class="py-3 total-sec">
 
@@ -267,7 +267,7 @@ textarea {
 									<span class="input-group-text notice-regist-title">제목</span> <input
 										type="text" class="form-control"
 										aria-label="Text input with segmented dropdown button"
-										name="NoticeTitle" value="${modiNoti.noticeTitle }">
+										name="NoticeTitle" value="${modiNoti.noticeTitle }" id ="noticetitle">
 								</div>
 
 								<div class="input-group mb-3">
@@ -277,9 +277,9 @@ textarea {
 										name="NoticeWriter" value="${modiNoti.noticeWriter }" readonly>
 
 									<span class="input-group-text">작성일</span>
-									 <input type="date"
-										aria-label="First name" class="form-control"
-										name="NoticeDate" value="${modiNoti.noticeDate }"> 
+		                             <input type="date" aria-label="First name" value=${modiNoti.noticeDate } class="form-control" readonly>
+		                             <!-- date 제대로 작성안하면 form이 submit이 안되네  -->
+
 										
 										<span
 										class="input-group-text">조회수</span> <input type="text"
@@ -288,17 +288,19 @@ textarea {
 
 								</div>
 
-								<div class="input-group mb-3">
-									<input type="file" class="form-control" id="inputGroupFile04"
-										aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-									<button class="btn btn-outline-secondary" type="button"
-										id="inputGroupFileAddon04">등록</button>
-								</div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="File" value="${modiNoti.noticeFileReal }" >
+                            
+				    		<button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">등록</button> 
+ 
+                        </div>
 
 								<div class="notice-regi-text">
 									<textarea class="form-control" placeholder="공지사항 내용 입력"
 										id="floatingTextarea" style="height: 500px" name="NoticeContent" >${modiNoti.noticeContent }</textarea>
 								</div>
+								
+								
 							</div>
 
 						</div>
@@ -318,6 +320,11 @@ textarea {
 
 
 			</section>
+			<!-- 숨긴 값  -->
+			<div class="input-group mb-3" style="display:none">
+				<span class="input-group-text notice-regist-title">번호 </span> 
+				<input type="text" class="form-control" aria-label="Text input with segmented dropdown button" name="NoticeNum" value="${modiNoti.noticeNum }">
+			</div>
 		</form>
 	</div>
 
@@ -330,9 +337,31 @@ textarea {
 </body>
 
 	<script>
+/* 	if ($('input[name=NoticeTitle]').val() === ''){
+		alert('제목을 작성해주셔야합니다.');
+		$('input[name=NoticeTitle]').focus();
+		return;
+	}
+	else if ($('input[name=NoticeContent]').val() === ''){
+		alert('내용 작성은 필수사항입니다.');
+		$('input[name=NoticeContent]').focus(); 
+		return;
+	}
+	else {
+		alert("수정이 정상 처리되었습니다.");
+		document.noticeModiForm.submit();
+	} */
 
 		$(function() {
 			$('#modiBtn').click(function(){
+				regist();
+			});
+			
+			function regist(){
+				let file = $('#inputGroupFile04').val(); 
+				file = file.slice(file.indexOf('.') + 1 ).toLowerCase();
+				console.log(file);
+				
 				if ($('input[name=NoticeTitle]').val() === ''){
 					alert('제목을 작성해주셔야합니다.');
 					$('input[name=NoticeTitle]').focus();
@@ -343,11 +372,37 @@ textarea {
 					$('input[name=NoticeContent]').focus(); 
 					return;
 				}
-				else {
-					alert("수정이 정상 처리되었습니다.");
+				else if (file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+					alert("jpg, png, jpeg, bmp 확장자만 등록하실 수 있습니다.");
+					$('#file').val('');
+					// 사용자가 등록한 file의 value를 지움 
+					return;
+				}
+				else{
 					document.noticeModiForm.submit();
 				}
+				
+			}
+			
+			
+			$('#delBtn').click(function(){
+				console.log('삭제버튼 클릭'); 
+				
+				if(confirm('선택한 공지사항을 삭제하시겠습니까?')){
+					location.href='<c:url value="/notice/delete/${modiNoti.noticeNum}" />'; 
+				}
+				else{
+					return;
+				}	
 			});
+			
+			// 등록 버튼을 누르게 되면 input 태그의 type이 file로 변환하고 등록 버튼 누르지 못하게 진행 
+			$('#inputGroupFileAddon04').click(function(){
+				$('#inputGroupFile04').attr("type", "file");
+				$('#inputGroupFileAddon04').attr("disabled", true);
+			})
+			
+			
 		})
 	</script>
 </html>

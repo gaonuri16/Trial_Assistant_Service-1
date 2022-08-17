@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,24 +11,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="${pageContext.request.contextPath }/resources/images/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/resources/images/favicon.ico">
+  <!-- 페이지 무조건 추가  -->
+	<link rel="shortcut icon" type="image/x-icon"
+		href="${pageContext.request.contextPath }/resources/images/favicon.ico">
+	
+	
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/templatemo.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/templatemo.css">
+	
+	<!-- Load fonts style after rendering the layout styles -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/fontawesome.min.css">
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+		
+	<!-- 아이콘 깨지는 것 해결하는 script -->
+	<script src="https://kit.fontawesome.com/22ff043012.js" crossorigin="anonymous"></script>
+		
+	<!-- Start Script -->
+	<script
+		src="${pageContext.request.contextPath }/resources/js/jquery-1.11.0.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/resources/js/jquery-migrate-1.2.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/resources/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/resources/js/templatemo.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+	<!-- End Script -->
+	
+	<!-- 무조건 페이지 추가  -->
 
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
 
 <style>
 

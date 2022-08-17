@@ -26,7 +26,7 @@ public class FaqMapperTest {
 			faq.setFaqContent(i + "content~");
 			faq.setFaqHit(0);
 			faq.setFaqFileLoca(i + "file location c://~~~");
-			faq.setJoinId("admin~");
+			faq.setJOINID("admin~");
 			
 			mapper.regist(faq);
 		}

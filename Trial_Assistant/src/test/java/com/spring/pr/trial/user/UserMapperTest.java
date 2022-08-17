@@ -21,13 +21,18 @@ public class UserMapperTest {
 	public IUserMapper mapper; 
 	
 	@Test
+	public void idCheck() {
+		System.out.println(mapper.idCheck("test00"));
+	}
+	
+	@Test
 	public void joinTest() {
 		for (int i = 0; i < 50; i++) {
 			UserVO user = new UserVO();
-			user.setJOINID("hrhr"+ i);
-			user.setJOINSOCNUM(i + "번째 주민erer");
-			user.setANMNOSEQ(i);
-			user.setJOINPERSON("y");
+			user.setJOINID("haiii"+ i);
+			user.setJOINSOCNUM("i2"+ "-" + i);
+			user.setANMNOSEQ(i*2);
+			user.setJOINPERSON("1");
 			
 			user.setJOINNAME(i + "이름");
 			user.setJOINPW(i + "번째 비번");
@@ -35,61 +40,66 @@ public class UserMapperTest {
 			user.setJOINEMAIL(i + "번째 이메일");
 			user.setJOINPHONE(i + "번째 번호");
 			user.setJOINADDRBASIC(i + "번째 주소");
-			user.setJOINADDRDETAIL(i + "번째 주소");
+			user.setJOINADDRDETAIL(i + "번째 주소소");
 			user.setJOINRIGHT("Y");
+			user.setINSSOCNUM("00"+"-"+i);
+			user.setINSADDRBASIC(i + "기관주소");
+			user.setINSADDRDETAIL(i + "기관주소소");
+			
 			
 			mapper.join(user);
 			
-//			UserBasicVO basic = new UserBasicVO();
-//			basic.setJOINID("qw"+ i);
-//			basic.setJOINSOCNUM(i + "번째 주민번호");
-//			basic.setJOINPERSON("1");
-//
-//			
-//			UserDetailVO detail = new UserDetailVO();
-//			detail.setJOINSOCNUM(i + "번째 주민번호");
-//			detail.setJOINNAME(i + "이름");
-//			detail.setJOINPW(i + "번째 비번");
-//			detail.setJOINGEN("1");
-//			detail.setJOINEMAIL(i + "번째 이메일");
-//			detail.setJOINPHONE(i + "번째 번호");
-//			detail.setJOINADDRBASIC(i + "번째 주소");
-//			detail.setJOINADDRDETAIL(i + "번째 주소소");
-//			detail.setJOINRIGHT("Y");
-//			user.setUserBasic(basic);
-//			user.setUsereDetail(detail.set);
-//			
-			
-			
 		}
 	}
+	
+	@Test
+	public void login() {
+//		System.out.println(mapper.login("haiii0", "0번째 비번"));
+		
+		if (mapper.login("haiii0", "0번째 비번") != null){
+			System.out.println("로그인 성공!");
+		}else {
+			System.out.println("로그인 실패 !");
+		}
+	}
+
+	
+	@Test
+	public void idSearch() {
+		System.out.println(mapper.idSearch("0이름", "i2-0").getJOINID());
+	}
+	
+	@Test
+	public void pwSearchTest() {
+		UserVO user = new UserVO();
+		user.setJOINNAME("1이름");
+		user.setJOINSOCNUM("i2-1");
+		user.setJOINPW("수정정정수정정수정");
+		
+		mapper.pwSearch(user);
+	}
+	
+	@Test
+	public void getinfoTest() {
+		System.out.println(mapper.getInfo("haiii0"));
+	}
+	
+	
+	@Test
+	public void updateUserTest() {
+		UserVO user = new UserVO();
+		user.setJOINID("test00");
+		user.setJOINADDRBASIC("수정 주소3");
+		user.setJOINADDRDETAIL("수정 주소소3");
+		
+		mapper.updateUser(user);
+	}
+	
+	@Test
+	public void deleteTest() {
+
+		mapper.deleteUser1("200000-0000000", "hhpw", "홍길동");
+		mapper.deleteUser2("200000-0000000", "hhpw", "홍길동");
+	}
+
 }
-//	@Test
-//	public void getListTest() {
-//		System.out.println(mapper.getList());
-//	}
-//	
-//	@Test
-//	public void getTotal() {
-//		System.out.println(mapper.getTotal());
-//	}
-//	
-//	
-//	@Test
-//	public void updateTest() {
-//		NoticeVO notice = new NoticeVO();
-//		notice.setNoticeNum(3);
-//		notice.setNoticeTitle("수정수정수정수정 ");
-//		notice.setNoticeWriter("수정수정수정");
-//		notice.setNoticeContent("수정수정수정수정수정");
-//		
-//		mapper.update(notice);
-//	}
-//	
-//	@Test
-//	public void deleteTest() {
-//
-//		mapper.delete(2);
-//	}
-//
-//}

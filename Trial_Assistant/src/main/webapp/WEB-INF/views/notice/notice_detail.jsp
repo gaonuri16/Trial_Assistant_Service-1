@@ -294,9 +294,10 @@ textarea{
                         </div>   
 
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="inputGroupFile04" 
-                            aria-describedby="inputGroupFileAddon04" aria-label="Upload" value=${notice.noticeFile } >
-                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">등록</button>
+                            <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"  value="${notice.noticeFileReal }" readonly>
+                            
+				    		<button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">다운로드</button> 
+ 
                         </div>
 
                         <div class="notice-regi-text">
@@ -327,4 +328,23 @@ textarea{
 
 
 </body>
+
+<script>	
+
+$(function() {
+	$('#inputGroupFileAddon04').click(function(){
+		alert('다운로드 하시겠습니까? ');
+		location.href='<c:url value="/notice/download?fileloca=${notice.noticeFile}" />'
+		// 파일 이름을 보내게 되면 해당 파일을 가져오도록 진행 
+	});
+	
+	
+
+	
+	
+})
+
+	
+</script>
+
 </html>

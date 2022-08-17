@@ -1,7 +1,5 @@
 package com.spring.pr.command;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +24,10 @@ public class UserDetailVO {
 		JOINADDRBASIC	VARCHAR2(100)	NOT NULL,
 		JOINADDRDETAIL	VARCHAR2(100)	NOT NULL,
 		JOINDATE	DATE DEFAULT SYSDATE	NOT NULL,
-		JOINRIGHT	VARCHAR2(1)	NOT NULL
+		JOINRIGHT	VARCHAR2(1)	NOT NULL,
+		INSSOCNUM VARCHAR2(20),
+		INSADDRBASIC VARCHAR2(100),
+		INSADDRDETAIL VARCHAR2(100)
 		); 
 	*/
 	
@@ -38,7 +39,11 @@ public class UserDetailVO {
 	public String JOINPHONE;
 	public String JOINADDRBASIC;
 	public String JOINADDRDETAIL;
-	public Date JOINDATE;
+	
 	public String JOINRIGHT;
+	public String INSSOCNUM;
+	public String INSADDRBASIC;
+	public String INSADDRDETAIL;
+	
 	
 }

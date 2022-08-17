@@ -2,14 +2,14 @@ package com.spring.pr.command;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class UserVO {
 	
-//	private UserBasicVO userBasic;
-//	private UserDetailVO usereDetail;
-	
+
 
 	public String JOINID;
 	public String JOINSOCNUM;
@@ -26,6 +26,9 @@ public class UserVO {
 	public String JOINADDRDETAIL;
 
 	public String JOINRIGHT;
+	public String INSSOCNUM;
+	public String INSADDRBASIC;
+	public String INSADDRDETAIL;
 	
 	
 }

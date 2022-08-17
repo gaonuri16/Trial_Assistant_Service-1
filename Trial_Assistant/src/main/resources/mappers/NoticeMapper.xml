@@ -19,14 +19,16 @@
 		<result column ="NOTICE_FILES" property = "NoticeFile"/>
 		<result column ="NOTICE_HITS" property = "NoticeHits"/>
 		<result column ="MNGR_ID" property = "MNGRID"/>
+		<result column ="NOTICE_FILE_REAL" property = "NoticeFileReal"/>
+		
 
 	</resultMap>
 	
 	<insert id="regist">
 		INSERT INTO 
 		Notice(NOTICE_NUMBER_SEQ, NOTICE_TITLE, NOTICE_WRITER, NOTICE_CONTENT,
-			   NOTICE_FILES, NOTICE_HITS, MNGR_ID)
-	    VALUES(NOTICE_NUMBER_SEQ_NAME.NEXTVAL, #{NoticeTitle}, #{NoticeWriter}, #{NoticeContent}, #{NoticeFile}, #{NoticeHits}, #{MNGRID})
+			   NOTICE_FILES, NOTICE_HITS, MNGR_ID, NOTICE_FILE_REAL)
+	    VALUES(NOTICE_NUMBER_SEQ_NAME.NEXTVAL, #{NoticeTitle}, #{NoticeWriter}, #{NoticeContent}, #{NoticeFile}, #{NoticeHits}, #{MNGRID},  #{NoticeFileReal}) 
 	</insert>
 	
 	<select id ="getList" resultMap="NoticeMap">
@@ -44,9 +46,9 @@
 		select * from Notice where Notice_NUMBER_SEQ = #{NoticeNum}
 	</select>
 	
-	<update id="update">
+	<update id="update" >
 		
-		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_Content = #{NoticeContent} 
+		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_Content = #{NoticeContent}, NOTICE_FILES = #{NoticeFile}, NOTICE_FILE_REAL = #{NoticeFileReal} 
 		where NOTICE_NUMBER_SEQ = #{NoticeNum}  
 		
 	</update>

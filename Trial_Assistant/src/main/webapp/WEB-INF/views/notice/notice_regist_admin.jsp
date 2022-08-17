@@ -239,7 +239,7 @@ textarea {
 
 		<!-- Start Categories of The Month -->
 		<form class="form-total" action="<c:url value='/notice/write'/>"
-			method="post" name="noticeRegiForm">
+			method="post" name="noticeRegiForm" enctype="multipart/form-data">
 			<section class="py-3 total-sec">
 
 				<div class="table-box col-lg second-section">
@@ -254,28 +254,28 @@ textarea {
 								<div class="input-group mb-3">
 									<span class="input-group-text notice-regist-title">제목</span> <input
 										type="text" class="form-control" name="NoticeTitle"
-										aria-label="Text input with segmented dropdown button">
+										aria-label="Text input with segmented dropdown button" id ="noticetitle">
 								</div>
 
 								<div class="input-group mb-3">
 									<span class="input-group-text notice-regist-title">작성자</span>
 									<!-- session으로 관리자 아이디를 자동으로 입력  -->
 									<input type="text" class="form-control" name="NoticeWriter"
-										aria-label="Text input with segmented dropdown button">
+										aria-label="Text input with segmented dropdown button" id ="noticewriter">
 								</div>
 
 								<div class="input-group mb-3">
-									<input type="file" class="form-control" id="inputGroupFile04"
-										aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+									<input multiple="multiple" type="file" class="form-control" id="inputGroupFile04"
+										aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="File">
 									<button class="btn btn-outline-secondary" type="button"
-										id="inputGroupFileAddon04">등록</button>
+										id="inputGroupFileAddon04" id = "fileRegiBtn">등록</button>
 									<!-- 파일 등록은 나중에  -->
 								</div>
 
 								<div class="notice-regi-text">
 									<textarea class="form-control" placeholder="공지사항 내용 입력"
 										name="NoticeContent" id="floatingTextarea"
-										style="height: 500px"></textarea>
+										style="height: 500px" ></textarea>
 								</div>
 							</div>
 
@@ -307,24 +307,67 @@ textarea {
 </body>
 
 	<script>
-
-		$(function() {
-			$('#registBtn').click(function(){
-				if ($('input[name=NoticeTitle]').val() === ''){
-					alert('제목을 작성해주셔야합니다.');
-					$('input[name=NoticeTitle]').focus();
-					return;
-				}
-				else if ($('input[name=NoticeContent]').val() === ''){
-					alert('내용 작성은 필수사항입니다.');
-					$('input[name=NoticeContent]').focus(); 
-					return;
-				}
+	$(function() {
+		$('#registBtn').click(function(){
+			regist();
+		});
+		
+		function regist(){
+/* 			const user_id = '$()';*/			
+			/* 접속한 유저의 세션 정보 가져오는 곳  */
+			
+			let file = $('#inputGroupFile04').val(); 
+			
+			file = file.slice(file.indexOf('.') + 1 ).toLowerCase();
+			console.log(file)
+			
+/* 			if (file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+				alert("jpg, png, jpeg, bmp 확장자만 등록하실 수 있습니다.");
+				$('#file').val('');
+				// 사용자가 등록한 file의 value를 지움 
+				return;
+			} */
+			
+/* 			const formData = new FormData();
+			const date = $('#inputGroupFile04');
+			console.log('폼 데이터 : ' + formData);
+			console.log(data[0].files[0]);
+			// 들어간 값 확인 
+			
+			formData.append('file', data[0].files[0]); */
+			
+			if ($('input[name=NoticeTitle]').val() === ''){
+				alert('제목을 작성해주셔야합니다.');
+				$('input[name=NoticeTitle]').focus();
+				return;
+			}
+			else if ($('input[name=NoticeContent]').val() === ''){
+				alert('내용 작성은 필수사항입니다.');
+				$('input[name=NoticeContent]').focus(); 
+				return;
+			}
+			else if (file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+				alert("jpg, png, jpeg, bmp 확장자만 등록하실 수 있습니다.");
+				$('#file').val('');
+				// 사용자가 등록한 file의 value를 지움 
+				return;
+			}
+			else{
+				document.noticeRegiForm.submit();
+			}
+			
+			
+			
+		}
+	})
+		
+		
+		/* $('#registBtn').click(function(){
+				
 				else {
 					document.noticeRegiForm.submit();
 				}
 				
-			});
-		})
+			}); */
 	</script>
 </html>

@@ -2,29 +2,39 @@ package com.spring.pr.mypage.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.spring.pr.command.FaqVO;
-import com.spring.pr.command.UserBasicVO;
-import com.spring.pr.command.UserDetailVO;
+import com.spring.pr.command.UserVO;
 
 public interface IMypageMapper {
 	
 		//my info 정보 조회
-		void getInfo(UserBasicVO basic, UserDetailVO detail);
+		UserVO getInfo(String JOINID);
 		
 		//my info 정보 수정
-		void updateInfo(String JOINSOCNUM);
+		void updateUser(UserVO user);
 		
 		//회원 탈퇴 
-		void deleteUser(String JOINSOCNUM);
+		void deleteUser1(@Param("JOINSOCNUM") String JOINSOCNUM, @Param("JOINPW") String JOINPW, @Param("JOINNAME") String JOINNAME);
+		void deleteUser2(@Param("JOINSOCNUM") String JOINSOCNUM, @Param("JOINPW") String JOINPW, @Param("JOINNAME") String JOINNAME);
+		
+		
+		
 		
 		//조력자 신청/선정 현황 조회
-		//void getSup();
+		void getSup();
 		
 		// 조력자 신청 정보 수정 
-		//void updateSup();
+		void updateSup();
+		
+		
 		
 		//myfaq 질문 글 목록 조회
 		List<FaqVO> getList();
+		
+		// 총 게시물 수 
+		int getTotal();
 		
 		//myfaq 질문 등록 
 		void registFaq(FaqVO faq);
