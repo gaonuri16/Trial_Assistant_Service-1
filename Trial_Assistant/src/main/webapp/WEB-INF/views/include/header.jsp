@@ -68,7 +68,7 @@
                                 <a class="nav-link" href="index.html">공고</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">공지사항</a>
+                                <a class="nav-link" href="<c:url value='/notice/list' />" >공지사항</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">조력자 신청 </a>

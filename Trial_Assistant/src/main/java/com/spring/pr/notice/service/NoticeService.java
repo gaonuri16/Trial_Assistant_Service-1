@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.pr.command.NoticeVO;
 import com.spring.pr.notice.mapper.INoticeMapper;
+import com.spring.pr.util.PageVO;
 
 @Service 
 public class NoticeService implements INoticeService {
@@ -20,15 +21,15 @@ public class NoticeService implements INoticeService {
 	}
 
 	@Override
-	public List<NoticeVO> getList() {
+	public List<NoticeVO> getList(PageVO page) {
 		
-		return mapper.getList();
+		return mapper.getList(page);
 	}
 
 	@Override
-	public int getTotal() {
+	public int getTotal(PageVO page ) {
 		// TODO Auto-generated method stub
-		return mapper.getTotal();
+		return mapper.getTotal(page);
 	}
 
 	@Override

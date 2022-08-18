@@ -3,6 +3,7 @@ package com.spring.pr.notice.service;
 import java.util.List;
 
 import com.spring.pr.command.NoticeVO;
+import com.spring.pr.util.PageVO;
 
 public interface INoticeService {
 	
@@ -10,10 +11,10 @@ public interface INoticeService {
 	void regist(NoticeVO board);
 	
 	// 글 목록
-	List<NoticeVO> getList();
+	List<NoticeVO> getList(PageVO page);
 	
 	// 총 게시물 수 
-	int getTotal();
+	int getTotal(PageVO page);
 	
 	// 상세보기 
 	NoticeVO getContent(int bno);

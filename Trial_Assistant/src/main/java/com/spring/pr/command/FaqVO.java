@@ -14,8 +14,9 @@ FAQ_NUMBER_SEQ	NUMBER(10)	NOT NULL,
 FAQ_TITLE	VARCHAR2(50)	NOT NULL,
 FAQ_CONTENT	VARCHAR2(1000)	NOT NULL,
 FAQ_DATE	DATE	DEFAULT sysdate NOT NULL,
-FAQ_HIT	NUMBER(5)	NOT NULL,
-FAQ_FILE_LOCA VARCHAR2(300),
+FAQ_FILE VARCHAR2(300),
+FAQ_FILE_REAL VARCHAR(300), 
+FAQ_HITS NUMBER(10) DEFAULT 0 NOT NULL,  
 JOIN_ID	VARCHAR2(20)	NOT NULL
 );
 
@@ -40,7 +41,8 @@ public class FaqVO {
 	private String FaqContent;
 	private Timestamp FaqDate;
 	private int FaqHit;
-	private String FaqFileLoca;
+	private String FaqFile;
+	private String FaqFileReal;
 	private String JOINID;
 
 }

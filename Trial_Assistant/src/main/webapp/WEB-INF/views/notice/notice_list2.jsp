@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>      
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>     
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -210,7 +211,7 @@
 }
 
 .announcement-search {
-        width: 430px;
+        width: 420px;
         margin-bottom: 10px;
         float: right;
         justify-content: center;
@@ -255,7 +256,9 @@
         font-weight: 100 !important;
         line-height: 30px;
     }
-    .link-a-style{
+    
+/* 제목을 클릭했을 때 a링크 스타일 없앰  */
+.link-a-style{
 	text-decoration:none;
 	color:black;
 }    
@@ -304,13 +307,14 @@
           </div>
 
     <!-- Start Categories of The Month -->
-    <form class="form-total">
+    <form class="form-total" name="pageForm">
       <section class = "py-3 total-sec ">
       <div class="table-box col-lg second-section">
         <div class="more-view title-box" id="notice_title">
+
           <div class="announcement-detail-title">
-            <h3>FAQ</h3>
-          </div>
+            <h3>공지사항</h3>
+        </div>
 
           <div class="announcement-search dropup">
             <button
@@ -318,57 +322,78 @@
               id="title-btn"
               class="btn btn-secondary dropdown-toggle"
               data-bs-toggle="dropdown"
-              aria-expanded="false">
+              aria-expanded="false"
+              name="condition"
+            >
               제목
             </button>
+            
             <ul class="dropdown-menu">
-              <li>작성자</li>
+              <!-- <li>작성자</li> -->
+              <!-- 공지사항의 작성자는 관리자만 가능하기 때문에 굳이 작성할 필요 없음  -->
+              <li value="content" ${pct.paging.condition=='content' ? 'selected' : ''}>내용</li>
+              <li value="title" ${pct.paging.condition=='title' ? 'selected' : '' }>제목</li>
               <li>내용</li>
               <li>제목</li>
             </ul>
-            <input type="text" placeholder="검색할 제목을 입력하세요..." />
-            <button id="announcement-search-btn">검색</button>
+            <input type="text" placeholder="검색할 제목을 입력하세요..." name="keyword" value="${pct.paging.keyword } "/>
+            
+             <input type="text" placeholder="검색할 제목을 입력하세요..." name="keyword"/>
+ 
+            <button type = "button" id="announcement-search-btn">검색</button>
           </div>
         </div>
 
-        <table class="announcement-table table  table-hover">
-          <thead style="background-color: #e9ecef; border-top:3px solid">
-            <th scope="col">번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">작성일</th>
-            <th scope="col">조회수</th>
+        <table class="announcement-table table table-hover">
+          <thead style="background-color: #e9ecef; border-top:3px solid ">
+	          <tr>
+	            <th scope="col">번호</th>
+	            <th scope="col">제목</th>
+	            <th scope="col">작성자</th>
+	            <th scope="col">작성일</th>
+	            <th scope="col">조회수</th>
+	          </tr>
           </thead>
 
-          <tbody>
-            
-          	<c:forEach var="faq" items="${faqList }">
+          <tbody style="border-top : 3px solid #e9ecef">
+          
+          	<c:forEach var="notice" items="${noticeList }">
           		<tr>
-	              <td>${faq.faqNum}</td>
+	              <td>${notice.noticeNum}</td>
 	              <td>
-	              	<a href="<c:url value='/faqans/content/${faq.faqNum }' />" class="link-a-style">${faq.faqTitle }</a>
+	              	<a href="<c:url value='/notice/content/${notice.noticeNum }/${pct.makeURI(pct.paging.pageNum }' />" class="link-a-style">${notice.noticeTitle }</a>
+	              	<a href="<c:url value='/notice/content/${notice.noticeNum } />" class="link-a-style">${notice.noticeTitle }</a>
+	              	
 	              </td>
-	              <td>${faq.JOINID }</td>
-	              <td><fmt:formatDate value="${faq.faqDate}" pattern="yyyy-MM-dd"/></td>
+	              <td>${notice.noticeWriter }</td>
+	              <td><fmt:formatDate value="${notice.noticeDate}" pattern="yyyy-MM-dd"/></td>
 	              <!-- Javascript를 사용해서 날짜 입력받거나  -->
-	              <td id="notice_hit">${faq.faqHit }</td>
+	              <td id="notice_hit">${notice.noticeHits }</td>
 	            </tr>
           	</c:forEach>
-          	
+            
+            
           </tbody>
         </table>
 
         <div class="andBtns">
-          <div class="paging-btns">
-            <button type="button" class="btn btn-outline-secondary">◀</button>
-            <button type="button" class="btn btn-outline-secondary">1</button>
-            <button type="button" class="btn btn-outline-secondary">2</button>
-            <button type="button" class="btn btn-outline-secondary">3</button>
-            <button type="button" class="btn btn-outline-secondary">4</button>
-            <button type="button" class="btn btn-outline-secondary">▶</button>
+          <div class="paging-btns" id="pagenation">
+          	<c:if test="${pct.prev }"> 
+            	<button type="button" class="btn btn-outline-secondary" data-pagenum="${pct.beginPage-1 }" >◀</button>
+            </c:if>
+            
+            <c:forEach var="page" begin="${pct.beginPage }" end="${pct.endPage }">
+            
+            	<button type="button" class="btn btn-outline-secondary" data-pagenum="${page } ">${page }</button>
+            
+            </c:forEach>
+			
+			<c:if test="${pct.next }">
+			
+				<button type="button" class="btn btn-outline-secondary" data-pagenum="${pct.endPage+1 }">▶</button>
+				
+			</c:if>
           </div>
-
-        
           <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">등록</button>
         </div>
 
@@ -376,6 +401,12 @@
 
       </div>
     </section>
+    
+    	<input type="hidden" name="pageNum" value="${pct.paging.pageNum }">
+        <input type="hidden" name="cpp" value="${pct.paging.cpp }">
+        <input type="hidden" name="condition" value="${pct.paging.condition }">
+ --%><%--         <input type="hidden" name="keyword" value="${pct.paging.keyword }">
+    
     </form>
     </div>
 
@@ -386,19 +417,36 @@
 
 </body>
 
-<script>
+	<script>
 		$(function(){
 			$('#inputGroupFileAddon04').click(function(){
 				console.log('등록 버튼 클릭 ');
 				
 				
 				if(confirm('공지사항을 등록하시겠습니까? ')){
-					location.href = '<c:url value = "/faqans/faqWrite" />';
+					location.href = '<c:url value = "/notice/write" />';
 				}
 				else{
 					return 
 				}
-			});			
+			});
+			$('#pagenation').on('click', 'button', function(event){
+				event.preventDefault(); 
+				
+				const value = ${event.target}.data('pagenum');
+				console.log(value);
+				
+				document.pageForm.pageNum.value = value;
+				document.pageForm.submit();
+				
+			});
+			
+			
 		});
-</script>
-</html>
+		
+		
+	
+	
+	
+	</script>
+</html>  --%>

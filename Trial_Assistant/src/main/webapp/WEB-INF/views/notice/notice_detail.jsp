@@ -307,8 +307,12 @@ textarea{
                     
                 </div>
 
+
                 <!-- 관리자로 로그인했을때만 수정버튼 활성화 -->
                 <div class="notice-regi-btn">
+                
+                    <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon04" onclick="location.href='<c:url value="/notice/list" /> '">목록</button>
+                
                     <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon04" onclick="location.href='<c:url value="/notice/modify?num=${notice.noticeNum }" /> '">수정</button>
                 </div>
 

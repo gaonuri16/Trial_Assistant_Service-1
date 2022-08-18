@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -246,7 +248,7 @@ textarea{
 
 
     <!-- Start Categories of The Month -->
-    <form class="form-total">
+		<form class="form-total" action="<c:url value='/faqans/faqWrite'/>" method="post" name="faqRegiForm" enctype="multipart/form-data">
         <section class = "py-3 total-sec">
 
         <div class="table-box col-lg second-section">
@@ -261,27 +263,27 @@ textarea{
                     <div>
                         <div class="input-group mb-3">
                             <span class="input-group-text notice-regist-title">제목</span>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+                            <input type="text" name="FaqTitle" class="form-control" aria-label="Text input with segmented dropdown button">
                         </div>   
 
                         <div class="input-group mb-3">
                             <span class="input-group-text notice-regist-title">작성자</span>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+                            <input type="text"  name="FaqWriter" class="form-control" aria-label="Text input with segmented dropdown button">
                         </div>   
 
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <input type="file" name="File" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                             <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">등록</button>
                         </div>
 
                         <div class="notice-regi-text">
-                            <textarea class="form-control" placeholder="공지사항 내용 입력" id="floatingTextarea" style="height: 500px"></textarea>
+                            <textarea class="form-control" name="FaqContent" placeholder="공지사항 내용 입력" id="floatingTextarea" style="height: 500px"></textarea>
                         </div>
                     </div>
                     
                 </div>
                 <div class="notice-regi-btn">
-                    <button class="btn btn-outline-secondary notice-modi-btn" type="button">등록</button>
+                    <button class="btn btn-outline-secondary notice-modi-btn" type="button" id="registBtn">등록</button>
 
                 </div>
 
@@ -301,4 +303,55 @@ textarea{
 
 
 </body>
+<script>
+	$(function() {
+		$('#registBtn').click(function(){
+			regist();
+		});
+		
+		function regist(){
+/* 			const user_id = '$()';*/			
+			/* 접속한 유저의 세션 정보 가져오는 곳  */
+			
+			let file = $('#inputGroupFile04').val(); 
+			
+			file = file.slice(file.indexOf('.') + 1 ).toLowerCase();
+			console.log(file)
+			
+			
+			if ($('input[name=NoticeTitle]').val() === ''){
+				alert('제목을 작성해주셔야합니다.');
+				$('input[name=NoticeTitle]').focus();
+				return;
+			}
+			else if ($('input[name=NoticeContent]').val() === ''){
+				alert('내용 작성은 필수사항입니다.');
+				$('input[name=NoticeContent]').focus(); 
+				return;
+			}
+			else if (file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+				alert("jpg, png, jpeg, bmp 확장자만 등록하실 수 있습니다.");
+				$('#file').val('');
+				// 사용자가 등록한 file의 value를 지움 
+				return;
+			}
+			else{
+				document.faqRegiForm.submit();
+			}
+			
+			
+			
+		}
+	})
+		
+		
+		/* $('#registBtn').click(function(){
+				
+				else {
+					document.noticeRegiForm.submit();
+				}
+				
+			}); */
+	</script>
+
 </html>

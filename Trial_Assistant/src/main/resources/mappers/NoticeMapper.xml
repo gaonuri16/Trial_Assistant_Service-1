@@ -24,6 +24,30 @@
 
 	</resultMap>
 	
+	<sql id="search">
+		
+ 		<if test="condition == 'title'">
+		
+			WHERE NOTICE_TITLE LIKE '%'||#{keyword}||'%'
+		
+		</if> 
+				
+		<if test="condition == 'content'">
+		
+			WHERE NOTICE_CONTENT LIKE '%'||#{keyword}||'%'
+		
+		</if> 
+		
+<!-- 		<if test="condition == writer">
+		
+			WHERE NOTICE_CONTENT LIKE '%'||#{keyword}||'%'
+		
+		</if> -->
+		<!-- 공지사항에는 작성자가 관리자만 가능하기 때문에 작성할 필요 없음  -->
+	
+	</sql>
+	
+	
 	<insert id="regist">
 		INSERT INTO 
 		Notice(NOTICE_NUMBER_SEQ, NOTICE_TITLE, NOTICE_WRITER, NOTICE_CONTENT,
@@ -33,12 +57,23 @@
 	
 	<select id ="getList" resultMap="NoticeMap">
 	
-		select * from notice order by notice_NUMBER_SEQ DESC	
+		select * from notice order by notice_NUMBER_SEQ DESC
+		
+		<!-- SELECT * FROM 
+		(SELECT ROWNUM as rn, tbl.* FROM 
+    		(SELECT * FROM Notice 
+    		<include refid="search" />
+    		ORDER BY NOTICE_NUMBER_SEQ DESC) tbl)
+    		<![CDATA[ 
+		WHERE rn > (#{pageNum} -1 ) * #{cpp}
+		AND rn <= #{pageNum} * #{cpp}
+		]]>  -->
 	</select>
 	
 	<select id="getTotal" resultType="int">
 	
 		select count(*) from Notice
+		<include refid="search"/>
 	
 	</select>
 	

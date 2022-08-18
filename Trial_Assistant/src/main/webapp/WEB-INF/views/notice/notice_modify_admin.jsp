@@ -307,8 +307,7 @@ textarea {
 
 						<!-- 관리자로 로그인했을때만 수정, 삭제 버튼 활성화 -->
 						<div class="notice-regi-btn">
-							<button class="btn btn-outline-secondary notice-modi-btn"
-								type="button" id="modiBtn">수정</button>
+							<button class="btn btn-outline-secondary notice-modi-btn" type="button" id="modiBtn">수정</button>
 
 							<button class="btn btn-outline-secondary" type="button" id="delBtn">삭제</button>
 						</div>

@@ -26,6 +26,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.pr.command.NoticeVO;
 import com.spring.pr.command.UploadVO;
 import com.spring.pr.notice.service.INoticeService;
+import com.spring.pr.util.PageCreater;
+import com.spring.pr.util.PageVO;
 
 @Controller
 @RequestMapping("/notice")
@@ -39,44 +41,10 @@ public class NoticeController {
 	@GetMapping("/write")
 	public String write() {
 		System.out.println("/notice/write : GET");
+		
 		return "notice/notice_regist_admin";
 	}
-	
-//	@PostMapping("/write")
-//	public String write(NoticeVO notice, MultipartHttpServletRequest files) {
-//		
-//		
-//		try{
-//			System.out.println("/notice/write : POST");
-//		
-//		notice.setMNGRID("managerID");
-//		
-//		List<MultipartFile> fileList = files.getFiles("NoticeFile");
-//		String uploadFolder = "/Users/sig6774/Desktop/Project_Workspace/IMAGE";
-////				/Users/sig6774/Desktop/스크린샷
-////				C:/Users/MSI/Desktop
-//		
-//		for(MultipartFile file : fileList) {
-//			String fileRealName = file.getOriginalFilename();
-//			
-//			long size = file.getSize();
-//			
-//			System.out.println("파일 이름 :" + fileRealName );
-//			System.out.println("파일 크기 : " + size);
-//			
-//			File saveFile = new File(uploadFolder + "/" + fileRealName);
-//			file.transferTo(saveFile);
-//		}
-//		
-//		System.out.println("작성 공지 내용 : " + notice.toString());
-//		service.regist(notice);
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return "redirect:/notice/list";
-//	}
-	
+
 	@PostMapping("/write")
 	public String write_file(NoticeVO notice, MultipartHttpServletRequest files) {
 		// 여러 파일이 controller로 들어오기 때문에 MultipartHttpServletRequest 인터페이스를 통해 
@@ -89,7 +57,7 @@ public class NoticeController {
 		
 		
 		// 서버에서 파일을 저장할 경로 
-		String uploadPath = "/Users/sig6774/Desktop/Project_Workspace/IMAGE"+filelocation;
+		String uploadPath = "/Users/sig6774/Desktop/Project_Workspace/IMAGE/NOTICE"+filelocation;
 		
 		File folder = new File(uploadPath);
 		if(!folder.exists()) {
@@ -143,18 +111,35 @@ public class NoticeController {
 	
 	
 	@GetMapping("/list")
-	public String listNotice(Model model) {
+	public String listNotice(PageVO page, Model model) {
 		System.out.println("/notice/list : GET");
-		model.addAttribute("noticeList", service.getList());
+		model.addAttribute("noticeList", service.getList(page));
+		// 조회 결과를 notice라는 이름으로 보내줌 
+		
+		PageCreater pct = new PageCreater();
+		pct.setPaging(page);
+		pct.setArticleTotalCount(service.getTotal(page));
+		System.out.println("페이지 객체 확인 : " + pct.toString());
+		model.addAttribute("pct", pct);
+		// 페이지 정보를 모델에 pct라는 이름으로 보내줌 
 		
 		return "notice/notice_list";
 	}
 	
 	@GetMapping("/content/{noticeNum}")
-	public String contentBoard(@PathVariable int noticeNum,  Model model) {
+	public String contentBoard(@PathVariable int noticeNum,  Model model, PageVO page) {
 		System.out.println("/notice/content : GET");
+		System.out.println("페이지 정보를 가지고 오는지 확인 : " + page.toString());
+		model.addAttribute("pageInfo", page);
 		
-		model.addAttribute("notice", service.getContent(noticeNum));
+		service.upHit(noticeNum);
+
+		NoticeVO notice = service.getContent(noticeNum);
+		
+		// 조회수 증가 로직 
+
+		model.addAttribute("notice", notice);
+
 		return "notice/notice_detail";
 	}
 	
@@ -181,7 +166,7 @@ public class NoticeController {
 		
 		
 		// 서버에서 파일을 저장할 경로 
-		String uploadPath = "/Users/sig6774/Desktop/Project_Workspace/IMAGE"+filelocation;
+		String uploadPath = "/Users/sig6774/Desktop/Project_Workspace/IMAGE/NOTICE"+filelocation;
 		
 		File folder = new File(uploadPath);
 		if(!folder.exists()) {
@@ -252,6 +237,7 @@ public class NoticeController {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Disposition", "attachment; filename=" + filelocation);
+		// 파일 명 변경할 수 있음 근데 각 파일마다 확장자를 붙여서 넣어줘야함 		
 		
 		try {
 			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
