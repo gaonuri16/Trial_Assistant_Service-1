@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.gh.mapper.IGhMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+	<resultMap type="com.spring.pr.command.GhVO" id="GhMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<id property="GhNum" column = "GH_NUM_SEQ"/>
+		
+		<result property="ghName" column ="GH_NAME"/>
+		<result property="ghOfcName" column ="GH_OFC_NAME"/>
+		<result property="ghOfcNum" column="GH_OFC_NUM"/>
+		<result property="ghYear" column="GH_YEAR"/>
+		<result property="ghSrttn" column="GH_SRTTN"/>
+		<result property="ghSocNum" column="GH_SOC_NUM"/>
+		<result property="ghBsnsNum" column="GH_BSNS_NUM"/>
+		<result property="ghJob" column="GH_JOB"/>
+		<result property="ghFax" column="GH_FAX"/>
+		<result property="ghHomeNum" column="GH_HOME_NUM"/>
+		<result property="ghAcadBack" column="GH_ACAD_BACK"/>
+		<result property="ghAcadBackFile" column="GH_ACAD_BACK_FILE"/>
+		<result property="ghCarrer" column="GH_CARRER"/>
+		<result property="ghCarrerFile" column="GH_CARRER_FILE"/>
+		<result property="ghEmail" column="GH_EMAIL"/>
+		<result property="ghPhoneNum" column="GH_PHONE_NUM"/>
+		<result property="ghBank" column="GH_BANK"/>
+		<result property="ghAccHol" column="GH_ACC_HOL"/>
+		<result property="ghBankNum" column ="GH_BANK_NUM"/>
+		<result property="ghPostNum" column ="GH_POST_NUM"/>
+		<result property="ghAddr" column="GH_ADDR"/>
+		<result property="ghDtlAddr" column ="GH_DTL_ADDR"/>
+		<result property="appNumSeq" column ="APP_NUM_SEQ"/>
+		<result property="joinId" column="JOINID"/>
+		
+	</resultMap>
+	
+	
+	<insert id="regist">
+	
+		INSERT INTO GH(GH_NUM_SEQ, GH_NAME, GH_OFC_NAME, GH_OFC_NUM, GH_YEAR, GH_SRTTN, GH_SOC_NUM, GH_BSNS_NUM, GH_JOB, GH_FAX, GH_HOME_NUM, GH_ACAD_BACK, GH_ACAD_BACK_FILE, GH_CARRER, GH_CARRER_FILE, GH_EMAIL, GH_PHONE_NUM, GH_BANK, GH_ACC_HOL, GH_BANK_NUM, GH_POST_NUM, GH_ADDR, GH_DTL_ADDR, APP_NUM_SEQ, JOINID)
+		VALUES(GH_NUM_SEQ_NAME.NEXTVAL, #{ghName}, #{ghOfcName}, #{ghOfcNum}, #{ghYear}, #{ghSrttn}, #{ghSocNum}, #{ghBsnsNum}, #{ghJob}, #{ghFax}, #{ghHomeNum}, #{ghAcadBack}, #{ghAcadBackFile}, #{ghCarrer}, #{ghCarrerFile}, #{ghEmail}, #{ghPhoneNum}, #{ghBank}, #{ghAccHol}, #{ghBankNum}, #{ghPostNum}, #{ghAddr}, #{ghDtlAddr}, #{appNumSeq}, #{joinId})
+	</insert>
+
+	
+</mapper>

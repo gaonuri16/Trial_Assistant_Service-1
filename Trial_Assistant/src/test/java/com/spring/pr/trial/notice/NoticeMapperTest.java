@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.pr.command.NoticeVO;
 import com.spring.pr.notice.mapper.INoticeMapper;
-import com.spring.pr.util.PageVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -42,11 +41,6 @@ public class NoticeMapperTest {
 		System.out.println(mapper.getTotal());
 	}
 	
-	@Test
-	public void getContentTest() {
-		System.out.println(mapper.getContent(3));
-	}
-	
 	
 	@Test
 	public void updateTest() {
@@ -63,11 +57,6 @@ public class NoticeMapperTest {
 	public void deleteTest() {
 
 		mapper.delete(2);
-	}
-	
-	@Test
-	public void upHitTest() {
-		mapper.upHit(3);
 	}
 
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.apply.mapper.IApplyMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+	<resultMap type="com.spring.pr.command.AncmtVO" id="AncmtMap">
+      <!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+      <id column = "ANM_NO_SEQ" property="AnmNum"/>
+      
+      <result column ="ANM_UPLOAD_DATE" property = "AnmUploadDate"/>
+      <result column ="ANM_TITLE" property = "AnmTitle"/>
+      <result column ="ANM_CONTENT" property = "AnmContent"/>
+      <result column ="ANM_FILE_LOCA" property = "AnmFileLoca"/>
+      <result column ="ANM_VIEW_CNT" property = "AnmViewCnt"/>
+      <result column ="MNGR_ID" property = "ManagerId"/>
+      <result column ="ANM_DEGREE" property = "AnmDegree"/>
+      <result column ="ANM_START" property = "AnmStart"/>
+      <result column ="ANM_END" property = "AnmEnd"/>
+      <result column ="ANM_YEAR" property = "AnmYear"/>
+      <result column ="ANM_DIVISION" property = "AnmDivision"/>
+   </resultMap>
+
+   <insert id="regist">
+      INSERT INTO
+      ANNOUNCEMENT(ANM_NO_SEQ, ANM_TITLE, ANM_DEGREE, ANM_START, ANM_END, ANM_YEAR, ANM_DIVISION)
+      VALUES(ANM_NO_SEQ_NAME.NEXTVAL, #{AnmTitle}, #{AnmDegree}, #{AnmStart}, #{AnmEnd}, #{AnmYear}, #{AnmDivision})
+   </insert>
+	
+	<select id="getList" resultMap="AncmtMap">	
+	SELECT ANM_NO_SEQ, ANM_YEAR, ANM_DEGREE, ANM_TITLE, ANM_START, ANM_END, ANM_DIVISION
+	FROM ANNOUNCEMENT
+	</select>
+	
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM USERDETAIL
+		WHERE
+		JOINID = #{JOINID}
+	</select>
+	
+	</mapper>

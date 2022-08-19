@@ -26,7 +26,7 @@
                 </ul>
             </div>
 
-            <div class="col-3 pt-5"> 
+            <div class="col-3 pt-5">
                 <h2 class="h2 text-light border-bottom pb-3 border-light">공지사항</h2>
                 <ul class="list-unstyled text-light footer-link-list">
                     <li><a class="text-decoration-none" href="#">공지사항</a></li>

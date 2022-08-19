@@ -61,9 +61,9 @@ public class InsttVO {
 	private String InsttFax;
 	private String InsttHomeNum;
 	private String InsttAcadBack;
-	private String InsttAcadBakFile;
+	private String InsttAcadBackFile;
 	private String InsttCarrer;
-	private String InsttCarrerBack;
+	private String InsttCarrerFile;
 	private String InsttEmail;
 	private String InsttPhoneNum;
 	private String InsttBank;

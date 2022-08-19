@@ -25,12 +25,10 @@
 	<!-- JDBC, DB 관련 빈을 등록하고 관리하는 설정 파일 -->
 	<!-- 히카리 커넥션 풀 빈 등록 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	<!-- jdbc드라이버 이름, url, id, pw 등록 -->
 	
-		<property name="driverClassName"
-			value="${ds.driverClassName}" />
-		<property name="jdbcUrl"
-			value="${ds.urlmac}" />
+	<!-- jdbc드라이버 이름, url, id, pw 등록 -->
+		<property name="driverClassName" value="${ds.driverClassName}" />
+		<property name="jdbcUrl" value="${ds.urlmac}" />
 		<property name="username" value="${ds.username}" />
 		<property name="password" value="${ds.password2}" />
 	</bean>
@@ -47,24 +45,22 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds" />
 
-		<property name="configLocation" value="WEB-INF/spring/mybatis-config.xml"/>
-		<!-- mybatis에 대한 추가적인 설정을 담은 xml 파일을 등록  -->
+<property name="configLocation" value="WEB-INF/spring/mybatis-config.xml"/>
+ 
 	 	
-	 	<property name="mapperLocations" value="classpath:/mappers/*Mapper.xml"/>
+	 <property name="mapperLocations" value="classpath:/mappers/*Mapper.xml"/>
 	  
 
 	</bean>
-
-
-	<!-- mapper이름은 이렇게 지정하세요  -->
-	<mybatis-spring:scan
-		base-package="com.spring.pr.notice.mapper" />
-	<mybatis-spring:scan
-			base-package="com.spring.pr.faq.mapper" />
-	<mybatis-spring:scan
-			base-package="com.spring.pr.answer.mapper" />
-	<mybatis-spring:scan
-		base-package="com.spring.pr.user.mapper" />
-	<mybatis-spring:scan
-		base-package="com.spring.pr.mypage.mapper" />
+	
+	<mybatis-spring:scan base-package="com.spring.pr.gh.mapper" />
+	<mybatis-spring:scan base-package="com.spring.pr.ts.mapper" />
+	<mybatis-spring:scan base-package="com.spring.pr.instt.mapper" />
+	<mybatis-spring:scan base-package="com.spring.pr.apply.mapper" />
+	<mybatis-spring:scan base-package="com.spring.pr.faq.mapper" />
+	<mybatis-spring:scan base-package="com.spring.pr.answer.mapper" />
+	<mybatis-spring:scan base-package="com.spring.pr.mypage.mapper" />
+	
+	
+		
 </beans>

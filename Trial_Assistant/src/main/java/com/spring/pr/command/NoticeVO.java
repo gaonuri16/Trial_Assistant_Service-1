@@ -25,8 +25,7 @@ public class NoticeVO {
 		NOTICE_CONTENT	VARCHAR2(3000)	NOT NULL,
 		NOTICE_DATE	DATE	DEFAULT sysdate NOT NULL,
 		NOTICE_FILES	VARCHAR2(50)	NOT NULL,
-		NOTICE_HITS	NUMBER(10)	DEFAULT 0 NOT NULL,
-		NOTICE_FILE_REAL VARCHAR2(300) 
+		NOTICE_HITS	VARCHAR2(10)	DEFAULT '0' NOT NULL	
 		);
 		
 		CREATE SEQUENCE NOTICE_NUMBER_SEQ_NAME
@@ -43,7 +42,6 @@ private String NoticeWriter;
 private String NoticeContent;
 private Timestamp NoticeDate;
 private String NoticeFile;
-private String NoticeFileReal;
 private int NoticeHits;
 private String MNGRID;
 }

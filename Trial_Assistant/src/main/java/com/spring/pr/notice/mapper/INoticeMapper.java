@@ -3,7 +3,6 @@ package com.spring.pr.notice.mapper;
 import java.util.List;
 
 import com.spring.pr.command.NoticeVO;
-import com.spring.pr.util.PageVO;
 
 public interface INoticeMapper {
 
@@ -11,10 +10,10 @@ public interface INoticeMapper {
 	void regist(NoticeVO notice);
 	
 	// 글 목록
-	List<NoticeVO> getList(PageVO page);
+	List<NoticeVO> getList();
 	
 	// 총 게시물 수 
-	int getTotal(PageVO page);
+	int getTotal();
 	
 	// 상세보기 
 	NoticeVO getContent(int NoticeNum);
@@ -24,7 +23,4 @@ public interface INoticeMapper {
 	
 	// 삭제 
 	void delete(int NoticeNum);
-	
-	// 조회수 증가 
-	void upHit(int FaqNum);
 }

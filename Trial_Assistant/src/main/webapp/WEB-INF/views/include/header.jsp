@@ -10,8 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>인덱스를 만들어 보자</title>
-    
-    
 	
 
 </head>
@@ -68,12 +66,17 @@
                                 <a class="nav-link" href="index.html">공고</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<c:url value='/notice/list' />" >공지사항</a>
+                                <a class="nav-link" href="about.html">공지사항</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="shop.html">조력자 신청 </a>
+                                <a class="nav-link" href="about.html">조력자 신청</a>
                             </li>
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">현황조회(관리자)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">기관정보(관리자)</a>
+                            </li>
                         </ul>
                     </div>
     

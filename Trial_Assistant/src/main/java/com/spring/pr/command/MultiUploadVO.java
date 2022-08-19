@@ -10,5 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class MultiUploadVO {
-	private List<UploadVO> fileList;
+	private List<UploadVO> fileList; // UploadVO객체들이 있는 list 선언
+	
 }

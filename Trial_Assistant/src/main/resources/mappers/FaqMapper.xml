@@ -15,25 +15,23 @@
 		<result column ="FAQ_TITLE" property = "FaqTitle"/>
 		<result column ="FAQ_CONTENT" property = "FaqContent"/>
 		<result column ="FAQ_DATE" property = "FaqDate"/>
-		<result column ="FAQ_HITS" property = "FaqHit"/>
-		<result column ="FAQ_FILE" property = "FaqFile"/>
-		<result column ="JOIN_ID" property = "JOINID"/>
-		<result column ="FAQ_FILE_REAL" property = "FaqFileReal"/>
-		
+		<result column ="FAQ_HIT" property = "FaqHit"/>
+		<result column ="FAQ_FILE_LOCA" property = "FaqFileLoca"/>
+		<result column ="JOIN_ID" property = "JoinId"/>
 
 	</resultMap>
 	
 	<insert id="regist">
 	
-		INSERT INTO FAQ(FAQ_NUMBER_SEQ, FAQ_TITLE, FAQ_CONTENT,  FAQ_FILE, JOIN_ID, FAQ_FILE_REAL)
-		VALUES(FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{FaqTitle}, #{FaqContent},  #{FaqFile}, #{JOINID}, #{FaqFileReal} )
+		INSERT INTO FAQ(FAQ_NUMBER_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_HIT, FAQ_FILE_LOCA, JOIN_ID)
+		VALUES(FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{FaqTitle}, #{FaqContent},  #{FaqHit}, #{FaqFileLoca}, #{JoinId})
 		<!-- 조회 수 증가 로직 구현해야함  -->
 		
 	</insert>
 	
 	<select id ="getList" resultMap="FaqMap">
 	
-		select * from FAQ 
+		select * from FAQ
 	
 	</select>
 	
@@ -51,8 +49,8 @@
 	
 	<update id="update">
 		
-		update FAQ SET FAQ_TITLE = #{FaqTitle}, FAQ_Content = #{FaqContent}, FAQ_FILES = #{FaqFile}, FAQ_FILE_REAL = #{FaqFileReal} 
-		where FAQ_NUMBER_SEQ = #{FaqNum}   
+		update FAQ SET FAQ_TITLE = #{FaqTitle}, FAQ_Content = #{FaqContent}, FAQ_FILE_LOCA = #{FaqFileLoca} 
+		where FAQ_NUMBER_SEQ = #{FaqNum}  
 		
 	</update>
 	

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.instt.mapper.IInsttMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+	
+	
+	<!--VO객체이름과 DB의 컬럼명이 다를 때 맞춰주는 작업  -->
+	<resultMap type="com.spring.pr.command.InsttVO" id="InsttMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<id column = "INSTT_NUM_SEQ" property="InsttNumSeq"/>
+		
+		<result column ="INSTT_NAME" property = "InsttName"/>
+		<result column ="INSTT_OFC_NAME" property = "InsttOfcName"/>
+		<result column ="INSTT_YEAR" property = "Instt_Year"/>
+		<result column ="INSTT_SRTTN" property = "Instt_Srttn"/>
+		<result column ="INSTT_DTL_SRTTN" property = "Instt_Dtl_Srttn"/>
+		<result column ="INSTT_SOC_NUM" property = "Instt_Soc_Num"/>
+		<result column ="INSTT_BSNS_NUM" property = "InsttBsnsNum"/>
+		<result column ="INSTT_JOB" property = "InsttJob"/>
+		<result column ="INSTT_FAX" property = "InsttFax"/>
+		<result column ="INSTT_HOME_NUM" property = "InsttHomeNum"/>
+		<result column ="INSTT_ACAD_BACK" property = "InsttAcadBack"/>
+		<result column ="INSTT_ACAD_BACK_FILE" property = "InsttAcadBackFile"/>
+		<result column ="INSTT_CARRER" property = "InsttCarrer"/>
+		<result column ="INSTT_CARRER_FILE" property = "InsttCarrerFile"/>
+		<result column ="INSTT_EMAIL" property = "InsttEmail"/>
+		<result column ="INSTT_PHONE_NUM" property = "InsttPhoneNum"/>
+		<result column ="INSTT_BANK" property = "InsttBank"/>
+		<result column ="INSTT_ACC_HOL" property = "InsttAccHol"/>
+		<result column ="INSTT_BANK_NUM" property = "InsttBankNum"/>
+		<result column ="INSTT_POST_NUM" property = "InsttPostNum"/>
+		<result column ="INSTT_ADDR" property = "InsttAddr"/>
+		<result column ="INSTT_DTL_ADDR" property = "InsttDtlAddr"/>
+		<result column ="APP_NUM_SEQ" property = "AppNumSeq"/>
+		<result column ="JOIN_ID" property = "JoinId"/>
+		
+	</resultMap>
+	
+	<insert id="regist">
+		INSERT INTO INSTT(INSTT_NUM_SEQ, INSTT_NAME, INSTT_OFC_NAME, INSTT_YEAR, INSTT_SRTTN, INSTT_DTL_SRTTN, INSTT_SOC_NUM,
+					INSTT_BSNS_NUM, INSTT_JOB, INSTT_FAX, INSTT_HOME_NUM, INSTT_ACAD_BACK, INSTT_ACAD_BACK_FILE, INSTT_CARRER
+					INSTT_CARRER_FILE, INSTT_EMAIL, INSTT_PHONE_NUM, INSTT_BANK, INSTT_ACC_HOL, INSTT_BANK_NUM, INSTT_ADDR, INSTT_DTL_ADDR, APP_NUM_SEQ, JOIN_ID)
+		VALUES(INSTT_NUM_SEQ_NAME.NEXTVAL, #{InsttName}, #{InsttOfcName}, #{InsttYear}, #{InsttSrttn}, #{InsttDtlSrttn}, #{InsttSocNum},
+				#{InsttBsnsNum}, #{InsttJob}, #{InsttFax}, #{InsttHomeNum}, #{InsttAcadBack}, #{InsttBackFile}, #{InsttCarrer}
+				#{InsttCarrerFile}, #{InsttEmail}, #{InsttPhoneNum}, #{InsttBank}, #{InsttAccHol}, #{InsttBankNum}, #{InsttPostNum}
+				#{InsttAddr}, #{InsttDtlAddr}, #{AppNumSeq}, #{JoinId})
+	</insert>
+
+	</mapper>

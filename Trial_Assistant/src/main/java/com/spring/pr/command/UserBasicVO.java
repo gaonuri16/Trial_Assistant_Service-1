@@ -15,15 +15,15 @@ public class UserBasicVO {
 	
 	/*
 	CREATE TABLE UserBasic (
-		JOINID	VARCHAR2(20)	NOT NULL,
-		JOINSOCNUM	VARCHAR2(20)	NOT NULL,
-		ANMNOSEQ	NUMBER(10)	NOT NULL,
-		JOINPERSON	VARCHAR2(2) DEFAULT 0	NOT NULL	
+		JOIN_ID	VARCHAR2(20)	NOT NULL,
+		JOIN_SOC_NUM	VARCHAR2(20)	NOT NULL,
+		ANM_NO_SEQ	NUMBER(10)	NOT NULL,
+		JOIN_PERSON	VARCHAR2(2) DEFAULT 0	NOT NULL	
 		); 
 	*/
 
-	public String JOINID;
-	public String JOINSOCNUM;
-	public int ANMNOSEQ;
-	public String JOINPERSON;
+	private String JoinId;
+	private String JoinSocNum;
+	private int AnmNum;
+	private String JoinPerson;
 }

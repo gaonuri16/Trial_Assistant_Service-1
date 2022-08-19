@@ -9,26 +9,34 @@ import lombok.ToString;
 @ToString
 public class UserVO {
 	
-
-
-	public String JOINID;
-	public String JOINSOCNUM;
-	public int ANMNOSEQ;
-	public String JOINPERSON;
+	//	CREATE TABLE pruser(
+	//    u_UserId VARCHAR2(30) primary key, 
+	//    u_UserPw VARCHAR2(30) not null,
+	//    u_UserName VARCHAR2(30) not null, 
+	//    
+	//    u_UserTel VARCHAR2(50),
+	//    u_UserEmail VARCHAR2(50), 
+	//    u_UserAddr VARCHAR2(100)
+	//    
+	//);
 	
-
-	public String JOINNAME;
-	public String JOINPW;
-	public String JOINGEN;
-	public String JOINEMAIL;
-	public String JOINPHONE;
-	public String JOINADDRBASIC;
-	public String JOINADDRDETAIL;
-
-	public String JOINRIGHT;
-	public String INSSOCNUM;
-	public String INSADDRBASIC;
-	public String INSADDRDETAIL;
+	private String userId;
+	private String userPw;
+	private String userName;
 	
+	private String userTel1;
+	private String userTel2;
+	private String userTel3;
 	
+	private String userEmail1;
+	private String userEmail2;
+	
+	private String userAddr1;
+	private String userAddr2;
+	private String userAddr3;
+	
+	private String totalUserTel;
+	private String totalUserEmail;
+	private String totalUserAddr;
+
 }

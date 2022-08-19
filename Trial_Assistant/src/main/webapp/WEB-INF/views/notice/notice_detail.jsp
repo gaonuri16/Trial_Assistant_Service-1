@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -196,20 +193,6 @@ textarea{
         font-weight: 100 !important;
         line-height: 30px;
     }
-    
-/* input:read-only{
-
-	box-shadow:none;
-	background-color: white;
-	
-} */
-
-
-/* readonly 스타일 없애주는 css */
-.form-control[readonly]{
-	background-color:white !important;
-}
-
 </style>
 </head>
 <body>
@@ -274,46 +257,37 @@ textarea{
                 <div>
                     <div>
                         <div class="input-group mb-3">
-                        
                             <span class="input-group-text notice-regist-title">제목</span>
-                            <input type="text" class="form-control" name="NoticeTitle" value="${notice.noticeTitle }" aria-label="Text input with segmented dropdown button" readonly>
-                            
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
                         </div>   
 
                         <div class="input-group mb-3">
-                        
                             <span class="input-group-text notice-regist-title">작성자</span>
-                            <input type="text" class="form-control" name="NoticeWriter" value = "${notice.noticeWriter }"aria-label="Text input with segmented dropdown button" readonly>
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 
                             <span class="input-group-text">작성일</span>
-                            <input type="date" aria-label="First name" value=${notice.noticeDate } class="form-control" readonly>
+                            <input type="text" aria-label="First name" class="form-control">
 
-                            <span class="input-group-text">조회수</span>
-                            <input type="text" aria-label="Last name" value = "${notice.noticeHits }" class="form-control" readonly>
+                            <span class="input-group-text">조회</span>
+                            <input type="text" aria-label="Last name" class="form-control">
                               
                         </div>   
 
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"  value="${notice.noticeFileReal }" readonly>
-                            
-				    		<button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">다운로드</button> 
- 
+                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">등록</button>
                         </div>
 
                         <div class="notice-regi-text">
-                            <textarea class="form-control" id="floatingTextarea" style="height: 500px" name="NoticeContent" readonly>${notice.noticeContent }</textarea>
+                            <textarea class="form-control" placeholder="공지사항 내용 입력" id="floatingTextarea" style="height: 500px"></textarea>
                         </div>
                     </div>
                     
                 </div>
 
-
                 <!-- 관리자로 로그인했을때만 수정버튼 활성화 -->
                 <div class="notice-regi-btn">
-                
-                    <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon04" onclick="location.href='<c:url value="/notice/list" /> '">목록</button>
-                
-                    <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon04" onclick="location.href='<c:url value="/notice/modify?num=${notice.noticeNum }" /> '">수정</button>
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">수정</button>
                 </div>
 
             </div>
@@ -332,23 +306,4 @@ textarea{
 
 
 </body>
-
-<script>	
-
-$(function() {
-	$('#inputGroupFileAddon04').click(function(){
-		alert('다운로드 하시겠습니까? ');
-		location.href='<c:url value="/notice/download?fileloca=${notice.noticeFile}" />'
-		// 파일 이름을 보내게 되면 해당 파일을 가져오도록 진행 
-	});
-	
-	
-
-	
-	
-})
-
-	
-</script>
-
 </html>

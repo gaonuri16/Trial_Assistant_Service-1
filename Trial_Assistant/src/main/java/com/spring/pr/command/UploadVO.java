@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class UploadVO {
 	
-	private String name; 
-	private MultipartFile file; 
+	private String name; // 파일명
+	private MultipartFile file; // 파일 값 
+	
 }

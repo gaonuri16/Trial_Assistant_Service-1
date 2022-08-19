@@ -14,22 +14,22 @@
 		<id column = "FAQ_NUMBER_SEQ" property="FaqNum"/>
 		<id column = "MNGR_ID" property="MngrId"/>
 		
-		<result column ="ANS_TITLE" property = "AnsTitle"/>
 		<result column ="ANS_WRITER" property = "AnsWriter"/>
 		<result column ="ANS_CONTENT" property = "AnsContent"/>
 		<result column ="ANS_DATE" property = "AnsDate"/>
-		<result column ="ANS_FILE" property = "AnsFile"/>
-		<result column ="ANS_FILE_REAL" property = "AnsFileReal"/>
+		<result column ="ANS_FILE_LOCA" property = "AnsFileLoca"/>
 		<result column ="ANS_HIT" property = "AnsHit"/>
+		
+
 
 	</resultMap>
 	
 	<insert id="regist">
 		INSERT INTO 
 		ANSWER(ANS_NUMBER_SEQ, FAQ_NUMBER_SEQ, MNGR_ID, ANS_WRITER,
-			   ANS_CONTENT, ANS_FILE, ANS_FILE_REAL)
+			   ANS_CONTENT, ANS_FILE_LOCA)
 	    VALUES(ANS_NUMBER_SEQ_NAME.NEXTVAL, FAQ_NUMBER_SEQ_NAME.NEXTVAL, #{MngrId}, #{AnsWriter}, 
-	    #{AnsContent}, #{AnsFileLoca}, #{AnsFileReal} )
+	    #{AnsContent}, #{AnsFileLoca} )
 	</insert>
 	
 	<select id ="getList" resultMap="AnswerMap">
@@ -51,8 +51,8 @@
 	
 	<update id="update">
 		
-		update ANSWER SET ANSWER_TITLE = #{AnsTitle}, ANSWER_Content = #{AnsContent}, ANSWER_FILE = #{AnsFile}, ANSWER_FILE_REAL = #{AnsFileReal} 
-		where ANSWER_NUMBER_SEQ = #{AnsNum}  
+		update ANSWER SET ANS_CONTENT = #{AnsContent}, ANS_FILE_LOCA = #{AnsFileLoca} 
+		where ANS_NUMBER_SEQ = #{AnsNum}  
 		
 	</update>
 	

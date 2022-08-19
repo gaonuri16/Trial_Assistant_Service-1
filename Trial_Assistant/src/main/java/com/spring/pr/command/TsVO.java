@@ -33,8 +33,8 @@ public class TsVO {
 		TS_DTL_ADDR	VARCHAR2(100)	NOT NULL,
 		TS_EXPRT	VARCHAR2(50)	NOT NULL,
 		TS_LNGG	VARCHAR2(50)	NOT NULL,
-		TS_DSGNT_COURT	VARCHAR2(100)	NOT NULL,
-		TS_ACTVT_AREA	VARCHAR2(100)	NOT NULL,
+		TS_DSG_CRT	VARCHAR2(100)	NOT NULL,
+		TS_ACTIVE_AREA	VARCHAR2(100)	NOT NULL,
 		APP_NUM_SEQ	NUMBER(10)	NOT NULL,
 		JOIN_ID	VARCHAR2(20)	NOT NULL
 		);
@@ -46,27 +46,27 @@ public class TsVO {
 		    NOCYCLE 
 		    NOCACHE;
 	*/
-	private int TsNum;
-	private String TsName;
-	private String TsSocNum;
-	private String TsHomeNum;
-	private String TsAcadBack;
-	private String TsAcadBackFile;
-	private String TsCarrer;
-	private String TsCarrerFile;
-	private String TsEmail;
-	private String TsPhoneNum;
-	private String TsBank;
-	private String TsAccHol;
-	private String TsBankNum;
-	private String TsPostNum;
-	private String TsAddr;
-	private String TsDtlAddr;
-	private String TsExprt;
-	private String TsLngg;
-	private String TsDsgntCourt;
-	private String TsActvtArea;
-	private int AppNum;
-	private String JoinId;
+	private int tsNum;
+	private String tsName;
+	private String tsSocNum;
+	private String tsHomeNum;
+	private String tsAcadBack;
+	private String tsAcadBackFile;
+	private String tsCarrer;
+	private String tsCarrerFile;
+	private String tsEmail;
+	private String tsPhoneNum;
+	private String tsBank;
+	private String tsAccHol;
+	private String tsBankNum;
+	private String tsPostNum;
+	private String tsAddr;
+	private String tsDtlAddr;
+	private String tsExprt;
+	private String tsLngg;
+	private String tsDsgCrt;
+	private String tsActiveArea;
+	private int appNumSeq;
+	private String joinId;
 	
 }

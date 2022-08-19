@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,10 +205,7 @@ textarea{
         line-height: 30px;
     }
 
-/* readonly 스타일 없애주는 css */
-.form-control[readonly]{
-	background-color:white !important;
-}
+
 
 
 </style>
@@ -279,29 +273,28 @@ textarea{
                     <div>
                         <div class="input-group mb-3">
                             <span class="input-group-text notice-regist-title">제목 </span>
-                            <input type="text" class="form-control" value="${faq.faqTitle }" aria-label="Text input with segmented dropdown button">
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
                         </div>   
 
                         <div class="input-group mb-3">
                             <span class="input-group-text notice-regist-title">작성자</span>
-                            <input type="text" class="form-control" value="${faq.JOINID }" aria-label="Text input with segmented dropdown button">
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 
                             <span class="input-group-text">작성일</span>
-                            <input type="text" aria-label="First name" value=${faq.faqDate } class="form-control">
+                            <input type="text" aria-label="First name" class="form-control">
 
-                            <span class="input-group-text">조회수</span>
-                            <input type="text" aria-label="Last name" value = "${faq.faqHit }" class="form-control">
+                            <span class="input-group-text">조회</span>
+                            <input type="text" aria-label="Last name" class="form-control">
                             
                         </div>   
 
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"  value="${faq.faqFileReal }" readonly>
-                            
-				    		<button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">다운로드</button> 
+                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">등록</button>
                         </div>
 
                         <div class="notice-regi-text">
-                            <textarea class="form-control" placeholder="FAQ 내용 입력" id="floatingTextarea" style="height: 500px">${faq.faqContent }</textarea>
+                            <textarea class="form-control" placeholder="FAQ 내용 입력" id="floatingTextarea" style="height: 500px"></textarea>
                         </div>
                     </div>
                     
@@ -309,11 +302,8 @@ textarea{
 
                 <!-- faq를 작성한 사용자만(아이디로 비교) 수정버튼 활성화 -->
                 <div class="notice-regi-btn">
-                
-                    <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon04" onclick="location.href='<c:url value="/faqans/list" /> '">목록</button>
-                
-<%--                     <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon04" onclick="location.href='<c:url value="/faqans/modify?num=${faq.faqNum }" /> '">수정</button>
- --%>                </div>
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">수정</button>
+                </div>
 
             </div>
 

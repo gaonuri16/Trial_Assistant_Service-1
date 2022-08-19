@@ -258,7 +258,7 @@ textarea{
 
 
     <!-- Start Categories of The Month -->
-    <form class="form-total" >
+    <form class="form-total">
         <section class = "py-3 total-sec">
 
         <div class="table-box col-lg second-section" >

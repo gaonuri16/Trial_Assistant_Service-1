@@ -19,71 +19,31 @@
 		<result column ="NOTICE_FILES" property = "NoticeFile"/>
 		<result column ="NOTICE_HITS" property = "NoticeHits"/>
 		<result column ="MNGR_ID" property = "MNGRID"/>
-		<result column ="NOTICE_FILE_REAL" property = "NoticeFileReal"/>
-		
 
 	</resultMap>
-	
-	<sql id="search">
-		
- 		<if test="condition == 'title'">
-		
-			WHERE NOTICE_TITLE LIKE '%'||#{keyword}||'%'
-		
-		</if> 
-				
-		<if test="condition == 'content'">
-		
-			WHERE NOTICE_CONTENT LIKE '%'||#{keyword}||'%'
-		
-		</if> 
-		
-<!-- 		<if test="condition == writer">
-		
-			WHERE NOTICE_CONTENT LIKE '%'||#{keyword}||'%'
-		
-		</if> -->
-		<!-- 공지사항에는 작성자가 관리자만 가능하기 때문에 작성할 필요 없음  -->
-	
-	</sql>
-	
 	
 	<insert id="regist">
 		INSERT INTO 
 		Notice(NOTICE_NUMBER_SEQ, NOTICE_TITLE, NOTICE_WRITER, NOTICE_CONTENT,
-			   NOTICE_FILES, NOTICE_HITS, MNGR_ID, NOTICE_FILE_REAL)
-	    VALUES(NOTICE_NUMBER_SEQ_NAME.NEXTVAL, #{NoticeTitle}, #{NoticeWriter}, #{NoticeContent}, #{NoticeFile}, #{NoticeHits}, #{MNGRID},  #{NoticeFileReal}) 
+			   NOTICE_FILES, NOTICE_HITS, MNGR_ID)
+	    VALUES(NOTICE_NUMBER_SEQ_NAME.NEXTVAL, #{NoticeTitle}, #{NoticeWriter}, #{NoticeContent}, #{NoticeFile}, #{NoticeHits}, #{MNGRID})
 	</insert>
 	
 	<select id ="getList" resultMap="NoticeMap">
 	
-		select * from notice order by notice_NUMBER_SEQ DESC
-		
-		<!-- SELECT * FROM 
-		(SELECT ROWNUM as rn, tbl.* FROM 
-    		(SELECT * FROM Notice 
-    		<include refid="search" />
-    		ORDER BY NOTICE_NUMBER_SEQ DESC) tbl)
-    		<![CDATA[ 
-		WHERE rn > (#{pageNum} -1 ) * #{cpp}
-		AND rn <= #{pageNum} * #{cpp}
-		]]>  -->
+		select * from Notice
+	
 	</select>
 	
 	<select id="getTotal" resultType="int">
 	
 		select count(*) from Notice
-		<include refid="search"/>
 	
 	</select>
 	
-	<select id = "getContent" resultMap="NoticeMap">
-		select * from Notice where Notice_NUMBER_SEQ = #{NoticeNum}
-	</select>
-	
-	<update id="update" >
+	<update id="update">
 		
-		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_Content = #{NoticeContent}, NOTICE_FILES = #{NoticeFile}, NOTICE_FILE_REAL = #{NoticeFileReal} 
+		update Notice SET NOTICE_TITLE = #{NoticeTitle}, NOTICE_WRITER = #{NoticeWriter}, NOTICE_Content = #{NoticeContent} 
 		where NOTICE_NUMBER_SEQ = #{NoticeNum}  
 		
 	</update>
@@ -91,12 +51,4 @@
 	<delete id="delete">
 		delete from Notice where NOTICE_NUMBER_SEQ = #{NoticeNum}
 	</delete>
-	
-		<!-- 조회 수 증가 로직  -->
-	<update id="upHit">
-	
-		update Notice set NOTICE_HITS = NOTICE_HITS+1
-		where Notice_NUMBER_SEQ = #{NoticeNum} 
-		
-	</update>	
 </mapper>

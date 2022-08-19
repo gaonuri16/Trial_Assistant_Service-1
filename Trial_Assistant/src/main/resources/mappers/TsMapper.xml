@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.pr.ts.mapper.ITsMapper">
+	<!-- namespace는 어떤 interface를 참조하는지 지정  -->
+
+
+<resultMap type="com.spring.pr.command.TsVO" id="TsMap">
+		<!-- 기본키는 id 태그를 사용하고 나머지는 result 태그를 사용 -->
+		<id property="tsNum" column="TS_NUM_SEQ"/>
+		
+		<result property="tsName" column="TS_NAME"/>
+		<result property="tsSocNum" column="TS_SOC_NUM"/>
+		<result property="tsHomeNum" column="TS_HOME_NUM"/>
+		<result property="tsAcadBack" column="TS_ACAD_BACK"/>
+		<result property="tsAcadBack" column="TS_ACAD_BACK_FILE" />
+		<result property="tsCarrer" column="TS_CARRER"/>
+		<result property="tsCarrerFile" column="TS_CARRER_FILE"/>
+		<result property="tsEmail" column="TS_EMAIL"/>
+		<result property="tsPhoneNum" column="TS_PHONE_NUM"/>
+		<result property="tsBank" column="TS_BANK"/>
+		<result property="tsAccHol" column="TS_ACC_HOL"/>
+		<result property="tsBankNum" column="TS_BANK_NUM"/>
+		<result property="tsPostNum" column="TS_POST_NUM"/>
+		<result property="tsAddr" column="TS_ADDR"/>
+		<result property="tsDtlAddr" column="TS_DTL_ADDR"/>
+		<result property="appNumSeq" column="APP_NUM_SEQ"/>
+		<result property="joinId" column="JOINID"/>	
+	</resultMap>
+	
+	<insert id="regist">
+		INSERT INTO TS(TS_NUM_SEQ, TS_NAME, TS_SOC_NUM, TS_HOME_NUM, TS_ACAD_BACK, TS_ACAD_BACK_FILE, TS_CARRER, TS_CARRER_FILE, TS_EMAIL, TS_PHONE_NUM, TS_BANK, TS_ACC_HOL, TS_BANK_NUM, TS_POST_NUM, TS_ADDR, TS_DTL_ADDR, TS_EXPRT, TS_LNGG, TS_DSG_CRT, TS_ACTIVE_AREA, APP_NUM_SEQ, JOINID) 
+		VALUES(TS_NUM_SEQ_NAME.NEXTVAL, #{tsName}, #{tsSocNum},  #{tsHomeNum}, #{tsAcadBack}, #{tsAcadBackFile}, #{tsCarrer}, #{tsCarrerFile}, #{tsEmail}, #{tsPhoneNum}, #{tsBank}, #{tsAccHol}, #{tsBankNum}, #{tsPostNum}, #{tsAddr}, #{tsDtlAddr}, #{tsExprt}, #{tsLngg}, #{tsDsgCrt}, #{tsActiveArea}, #{appNumSeq}, #{joinId})
+	</insert>
+	
+	
+	
+
+</mapper>
