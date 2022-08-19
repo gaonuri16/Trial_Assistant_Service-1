@@ -11,37 +11,32 @@
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
-
+    
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-<!--
-    
-TemplateMo 559 Zay Shop
 
-https://templatemo.com/tm-559-zay-shop
+    <script type="text/javascript" src="<%=CONTEXT%>/script/lib/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+    function registerFile(){
+	   $('#fileForm').submit();
+    }
 
--->
+</script>
+
 </head>
 
 <style>
-
-    #aca-back {
-        resize: none;
-    }
-    #carrer {
-        resize: none;
+    .titlefoot {
+        text-align: center;
+        margin: 70px auto;
     }
 
-    #inputGroupFile04 {
-        width: 50%;
-        float: right;
-    }
-
-    #ge-info {
-        font-weight: number 500;
+    #bnsn-num-msg {
+        font-size: 80%;
+        color: red;
     }
 
     /* 푸터 */
@@ -59,22 +54,6 @@ https://templatemo.com/tm-559-zay-shop
         line-height: 30px;
     }
 
-    .titlefoot {
-        text-align: center;
-        margin: 70px auto;
-    }
-
-    #gene-num-msg {
-        font-size: 70%;
-        color: red;
-    }
-
-    #hp-ge-srbtn{
-        float: left;
-        margin-left: 60px;
-        padding-right: 30px;
-    }
-
     #result-alarm {
         display: inline-block;
         width: 20px;
@@ -83,6 +62,10 @@ https://templatemo.com/tm-559-zay-shop
         cursor: pointer;
     }
 
+    #excel-btn {
+        
+        float: right;
+    }
 
 </style>
 
@@ -170,7 +153,7 @@ https://templatemo.com/tm-559-zay-shop
                     <li><a class="dropdown-item b1" href="#">로그아웃</a></li>
                 </ul>
         </div>
-    </nav>
+    </nav>  
     
     <!-- Close Header -->
 
@@ -199,200 +182,67 @@ https://templatemo.com/tm-559-zay-shop
         <div class="row">
             <div class="container-fluid py-3">
                 <section class="container py-5">
-                    <div class="announcement-detail-title">
-                      <h1>기관추천조력자 기본정보 입력</h1>
-                      <hr>
+                    <div>
+                        <h1>기관 추천 조력자 신청</h1><hr width="1250">
+                    </div>
+                </section>
+            </div>
+
+            <form class="col-md-5 m-auto" method="post" role="form" id="instt-info">
+                <div class="mb-3">
+                    <label for="inputbnsnnum">사업자 번호</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="bnsn-num" name="bnsn-num">
+                            <button class="btn btn-success">기관 등록 여부 확인</button>
+                        </div>
+                        <span id="bnsn-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
+                        
+                        
+                        <br>
+                        <br>
+
+                    신청서 업로드하기    
+                    <div>
+                        <form id="fileForm" name="fileForm" method="post" action="excelLoaderPro.jsp" enctype="multipart/form-data">
+                             <table border="1">
+                                <tbody id="fileAttachBody">
+                                    <tr>
+                                      <td> 
+                                        <input type="file" id="fileAttach" name="fileAttach" />
+                                        <button onclick="registerFile();">Excel파일읽기</button>
+                                      </td>
+                                    </tr>
+                                </tbody>
+                             </table>
+                        </form>
                     </div>
 
-                    <br>
-                    <br>
-
-                    <form class="col-md-9 m-auto" method="post" role="form" id="ge-info">
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputname">이름</label>
-                                <input type="text" class="form-control mt-1" id="name" name="name">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputsocnum">주민등록번호</label>
-                                <input type="text" class="form-control mt-1" id="soc-num" name="soc-num">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                        </div>
-
-                        <p></p>
-
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputhomephonenum">집 전화번호</label>
-                                <input type="tel" class="form-control mt-1" id="home-phone-num" name="home-phone">
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputphonenum">휴대폰 번호</label>
-                                <input type="tel" class="form-control mt-1" id="phone-num" name="phone">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                        </div>
-
-                        <p></p>
-
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputjob">직업</label>
-                                <input type="text" class="form-control mt-1" id="job" name="job">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputemail">이메일</label>
-                                <input type="email" class="form-control mt-1" id="email" name="email">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                        </div>
-
-                        <p></p>
-
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputhelyear">조력자 세부 구분</label>
-                                <input type="text" class="form-control mt-1" id="hel-year" name="hel-year">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputhel-srttn">조력자 구분</label><span id="gene-num-msg"> *필수 사항입니다.</span><!--자바스크립트에서 추가-->
-
-                                <p></p>
-
-                                <div id="hp-ge-srttn">
-                                    <div  id="hp-ge-srbtn">
-                                    의사<input type="radio" name="rc-group2" value="5">
-                                </div>
-                                <div  id="hp-ge-srbtn">
-                                    회계사<input type="radio" name="rc-group2" value="5">
-                                </div>
-                            </div>
-                        </div>
-
-                        <p></p>
-
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputbsnsnum">사업자 번호</label>
-                                <input type="text" class="form-control mt-1" id="bsns-num" name="bsns-num">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputfax">팩스</label>
-                                <input type="text" class="form-control mt-1" id="fax" name="fax">
-                            </div>
-                        </div>
-
-                        <p></p>
-
-                        <div class="row">   
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputofcname">사무소명</label>
-                                <input type="text" class="form-control mt-1" id="ofc-name" name="ofc-name">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputofcnum">사무소 번호</label>
-                                <input type="text" class="form-control mt-1" id="ofc-num" name="ofc-num">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                        </div>
-                        
-                        <p></p>
-
-                        <div class="mb-3">
-                            <label for="inputacaback">학력</label>
-                            <textarea class="form-control mt-1" id="aca-back" name="aca-back" rows="10"></textarea>
-                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                            <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-
-                            <br>
-                            <br>
-
-                            <div class="mb-3">
-                                <label for="inputcarrer">경력</label>
-                                <textarea class="form-control mt-1" id="carrer" name="carrer" rows="10"></textarea>
-                               <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                               <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                        </div>
-
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputbank">입금 은행</label>
-                                <input type="text" class="form-control mt-1" id="bank" name="bank">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputacchol">예금주</label>
-                                <input type="text" class="form-control mt-1" id="acc-hol" name="acc-hol">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="inputbanknum">계좌번호</label>
-                                <input type="text" class="form-control mt-1" id="acc-hol" name="acc-hol">
-                                <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                            </div>
-                        </div>
-
-                        <br>
-                        <br>
-                        
-                        <div class="form-group">
-                            <label for="addr-num">주소</label>
-                            <div class="input-group">
-                                <input type="text" name="addrZipNum" class="form-control" id="addrZipNum" placeholder="우편번호" readonly>
-                                <div class="input-group-addon">
-                                    <button type="button" class="btn btn-success">주소찾기</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="addr" class="form-control" id="addr" placeholder="기본주소">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="dtladdr" class="form-control" id="dtladdr" placeholder="상세주소">
-                            <span id="gene-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
-                        </div>
-                        
-                        <p></p>
-                        <p></p>
-
-                        <div class="form-group">
-                            <label for="hp-result-alram">신청 진행 및 결과 알림</label>
-                            <div id="hp-result-alram">
-                                <div>
-                                    SMS <input type="checkbox" id="result-alarm">
-                                </div>
-                                <div>
-                                    전화 <input type="checkbox" id="result-alarm">
-                                </div>
-                                <div>
-                                    이메일 <input type="checkbox" id="result-alarm">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Content -->
+                <br>
         
+                
+                학력/경력 파일
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
 
+                <br>
+                
+                <div class="form-group">
+                    <label for="hp-result-alram">신청 진행 및 결과 알림</label>
+                    <div id="hp-result-alram">
+                        <div>
+                            SMS <input type="checkbox" id="result-alarm">
+                        </div>
+                        <div>
+                            전화 <input type="checkbox" id="result-alarm">
+                        </div>
+                        <div>
+                            이메일 <input type="checkbox" id="result-alarm">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+    <!-- End Content -->
 
     
 
@@ -426,7 +276,7 @@ https://templatemo.com/tm-559-zay-shop
     <!--End Brands-->
 
 
-   <!-- Start Footer 회원 -->
+  <!-- Start Footer 회원 -->
 <footer class="bg-dark" id="tempaltemo_footer">
     <div class="container">
         <div class="row">
@@ -462,10 +312,11 @@ https://templatemo.com/tm-559-zay-shop
                 </ul>
             </div>
             
+
         </div>
 
     </div>
-    </footer>
+</footer>
 
 
 
@@ -543,8 +394,6 @@ https://templatemo.com/tm-559-zay-shop
     
 
 </footer>
-
-   
 
 <!-- End Footer -->
 

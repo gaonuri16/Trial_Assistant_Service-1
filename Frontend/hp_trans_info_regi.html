@@ -69,6 +69,14 @@ https://templatemo.com/tm-559-zay-shop
         color: red;
     }
 
+    #result-alarm {
+        display: inline-block;
+        width: 20px;
+        height: 15px;
+        border: 2px solid #bcbcbc;
+        cursor: pointer;
+    }
+
 </style>
 
 <body>
@@ -188,6 +196,7 @@ https://templatemo.com/tm-559-zay-shop
                       <h1>통번역인 기본 정보 입력</h1>
                       <hr>
                     </div>
+                </section>
 
                     <br>
                     <br>
@@ -327,7 +336,24 @@ https://templatemo.com/tm-559-zay-shop
                             <input type="text" name="dtladdr" class="form-control" id="dtladdr" placeholder="상세주소">
                             <span id="trans-num-msg">*필수 사항입니다.</span><!--자바스크립트에서 추가-->
                         </div>
-                        
+
+                        <br>
+                        <br>
+
+                        <div class="form-group">
+                            <label for="hp-result-alram">신청 진행 및 결과 알림</label>
+                            <div id="hp-result-alram">
+                                <div>
+                                    SMS <input type="checkbox" id="result-alarm">
+                                </div>
+                                <div>
+                                    전화 <input type="checkbox" id="result-alarm">
+                                </div>
+                                <div>
+                                    이메일 <input type="checkbox" id="result-alarm">
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -343,23 +369,11 @@ https://templatemo.com/tm-559-zay-shop
     <section class="py-5">
         <div class="container my-4">
             <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
 
+                <div class="titlefoot col mt-2">
+                    <button type="submit" class="btn btn-secondary btn-lg px-3" id="infor-btn">이전</button>
+                    <button type="button" class="btn btn-secondary btn-lg px-3" id="infor-btn">다음</button>
                 </div>
-                                
-                    
-                            </div>
-
-                            <div class="titlefoot col mt-2">
-                                <button type="submit" class="btn btn-secondary btn-lg px-3" id="infor-btn">이전</button>
-                                <button type="button" class="btn btn-secondary btn-lg px-3" id="infor-btn">다음</button>
-                            </div>
-
-                                
-                            </div>
-
-                            
-                        </div>
 
                     </div>
                 </div>

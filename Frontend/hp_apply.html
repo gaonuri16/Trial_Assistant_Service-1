@@ -36,19 +36,6 @@
             width: 100%;
         }
 
-        /* #apply-banner {
-
-            text-align: center;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-        } */
-        
-
-        
-
-
-
     </style>
 
     <body>
@@ -140,7 +127,7 @@
         <!-- Close Header -->
 
         <!-- Modal -->
-        <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="w-100 pt-1 mb-5 text-right">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -154,11 +141,12 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
 
 
 
         <!-- 조력자 공고 신청 배너 -->
+    <form class="form-total">
         <div class="container py-5">
             <div class="row">
                 <div class="container-fluid py-3">
@@ -166,17 +154,15 @@
                         <div>
                             <h1 id="apply-benner">조력자 신청하기</h1><hr width="1250">
                         </div>
+                    </section>
                 </div>
 
                 <!-- 공고 테이블 -->
-                <section>
-                    <div class="container-fluid" id="helper-apply">
-                        <div class="content-row">
-                            <!--lg에서 9그리드, xs에서 전체그리드-->   
-                            <div class="col-lg-9 col-xs-12 board-table">
-                                <div class="titlebox">
-                                </div>
-
+                <div class="container-fluid" id="applyList">
+                    <div class="content-row">
+                        <!--lg에서 9그리드, xs에서 전체그리드-->   
+                        <div class="col-lg-9 col-xs-12 board-table">
+                            <div class="titlebox"></div>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr align="center">
@@ -189,181 +175,149 @@
                                             <th></th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
+                                        <tr align="center">
+                                            <td>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <p>1</p>
+                                            </td>
+
+                                            <td>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <p>2022</p>
+                                            </td>
+
+                                            <td>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <p>2차</p>
+                                            </td>
+            
+                                            <td>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <p>통번역인 조력자 선발</p>
+                                            </td>
+            
+                                            <td>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <p>2022-03-15 ~ 2022-09-02</p>
+                                            </td>
+            
+                                            <td>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <p>통번역인</p>
+                                            </td>
+            
+                                            <td>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col text-center">
+                                                            <button class="btn btn-success">신청하기</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+            
                                             <tr align="center">
                                                 <td>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <p>1</p>
+                                                    <p>2</p>
                                                 </td>
+
                                                 <td>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <p>2022</p>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <p>2022</p>
                                                 </td>
+
                                                 <td>
                                                     &nbsp;&nbsp;&nbsp;
                                                     <p>2차</p>
                                                 </td>
-            
+                
                                                 <td>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <p>통번역인 조력자 선발</p>
+                                                    <p>일반 조력자 선발</p>
                                                 </td>
-            
+                
                                                 <td>
                                                     &nbsp;&nbsp;&nbsp;
                                                     <p>2022-03-15 ~ 2022-09-02</p>
                                                 </td>
-            
+                
                                                 <td>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <p>통번역인</p>
+                                                    <p>일반 조력자</p>
                                                 </td>
-            
+                
                                                 <td>
                                                     <div class="container">
                                                         <div class="row">
-                                                        <div class="col text-center">
-                                                            <button class="btn btn-success">신청하기</button>
-                                                        </div>
+                                                            <div class="col text-center">
+                                                                <button class="btn btn-success">신청하기</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </td>
             
                                                 <tr align="center">
                                                     <td>
-                                                        &nbsp;&nbsp;&nbsp;
-                                                        <p>2</p>
+                                                         &nbsp;&nbsp;&nbsp;
+                                                        <p>3</p>
                                                     </td>
+
                                                     <td>
-                                                    &nbsp;&nbsp;&nbsp;
-                                                    <p>2022</p>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <p>2022</p>
                                                     </td>
+
                                                     <td>
                                                         &nbsp;&nbsp;&nbsp;
                                                         <p>2차</p>
                                                     </td>
-                
+                    
                                                     <td>
                                                         &nbsp;&nbsp;&nbsp;
-                                                        <p>일반 조력자 선발</p>
+                                                        <p>기관 추천 조력자 선발</p>
                                                     </td>
-                
+                    
                                                     <td>
                                                         &nbsp;&nbsp;&nbsp;
                                                         <p>2022-03-15 ~ 2022-09-02</p>
                                                     </td>
-                
+                    
                                                     <td>
                                                         &nbsp;&nbsp;&nbsp;
-                                                        <p>일반 조력자</p>
+                                                        <p>기관 추천 조력자</p>
                                                     </td>
-                
+                    
                                                     <td>
                                                         <div class="container">
                                                             <div class="row">
-                                                            <div class="col text-center">
-                                                                <button class="btn btn-success">신청하기</button>
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-            
-                                                    <tr align="center">
-                                                        <td>
-                                                            &nbsp;&nbsp;&nbsp;
-                                                            <p>3</p>
-                                                        </td>
-                                                        <td>
-                                                        &nbsp;&nbsp;&nbsp;
-                                                        <p>2022</p>
-                                                        </td>
-                                                        <td>
-                                                            &nbsp;&nbsp;&nbsp;
-                                                            <p>2차</p>
-                                                        </td>
-                    
-                                                        <td>
-                                                            &nbsp;&nbsp;&nbsp;
-                                                            <p>기관 추천 조력자 선발</p>
-                                                        </td>
-                    
-                                                        <td>
-                                                            &nbsp;&nbsp;&nbsp;
-                                                            <p>2022-03-15 ~ 2022-09-02</p>
-                                                        </td>
-                    
-                                                        <td>
-                                                            &nbsp;&nbsp;&nbsp;
-                                                            <p>기관 추천 조력자</p>
-                                                        </td>
-                    
-                                                        <td>
-                                                            <div class="container">
-                                                                <div class="row">
                                                                 <div class="col text-center">
                                                                     <button class="btn btn-success">신청하기</button>
                                                                 </div>
-                                                                </div>
                                                             </div>
-                                                        </td>
-            
-                                                        
-                                            </tr>                    
-                                    </tbody>             
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tr>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </form>
         <!-- Start Brands -->
         <section class="py-5">
             <div class="container my-4">
-                <div class="row text-center py-3">
-                    <div class="col-lg-6 m-auto">
-                        <h1 class="h1"></h1>
-                        <p>
-                            
-                        </p>
-                    </div>
-                    <div class="col-lg-9 m-auto tempaltemo-carousel">
-                        <div class="row d-flex flex-row">
-                            <!--Controls-->
-                        
-                            <!--End Controls-->
-
-                            <!--Carousel Wrapper-->
-                            
-
-                                        <!--First slide-->
-                                        
-                                        <!--End First slide-->
-
-                                        <!--Second slide-->
-                                        
-                                        <!--End Second slide-->
-
-                                        <!--Third slide-->
-                                        
-                                        <!--End Third slide-->
-
-                                    </div>
-                                    <!--End Slides-->
-                                </div>
-                            </div>
-                            <!--End Carousel Wrapper-->
-
-                            <!--Controls-->
-                            
-                            <!--End Controls-->
-                        </div>
-                    </div>
-                </div>
+                <div class="row text-center py-3"></div>
             </div>
         </section>
         <!--End Brands-->
+        
 
 
         <!-- Start Footer 회원 -->
